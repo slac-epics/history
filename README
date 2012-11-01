@@ -1,0 +1,12 @@
+
+This module provides source code for aSub
+records that support collecting history waveforms
+for specified ai PV's, along with some simple
+signal analysis of waveforms to provide, MIN,
+MAX, AVG, RMS, and StdDev values.
+
+(I,Q) to polar (R,T) conversion is also supported.
+
+TODO: Consider merging in ANL's waveProc module
+to add FFT spectrum analysis and additional 
+waveform signal statistics.

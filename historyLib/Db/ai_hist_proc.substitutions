@@ -1,0 +1,47 @@
+#
+# ai_hist_proc.substitutions
+# This sample substitutions file sets the pattern for keeping
+# history waveforms for the specified analog input PV,
+# along with wave processing to create the MAX, MIN,
+# RMS, and StdDev for each.
+#
+# Macro names
+#	PV		- Name of PV to track
+
+# Create history PV's
+# This substitution creates two PV's per instance
+#   $(PV):Hist:$(NAME):Sub	- aSub record to do processing
+#	$(PV):Hist:$(NAME)		- waveform record for the history data
+# Customize as desired with different periods
+file pv_history.template
+{
+	pattern
+	{	NAME,		PERIOD,		PV		}
+	{	"LAST_N",	1,			"$(PV)"	}
+	{	"10MIN",	600,		"$(PV)"	}
+	{	"1HR",		3600,		"$(PV)"	}
+	{	"24HR",		86400,		"$(PV)"	}
+	{	"WEEK",		604800,		"$(PV)"	}
+}
+
+
+# Create waveform processing records
+# This substitution creates two PV's per instance
+#   $(WAVE):RMS:Sub	- aSub record to do processing
+#	$(WAVE):AVG		- ai record for waveform avg value
+#	$(WAVE):MAX		- ai record for waveform max value
+#	$(WAVE):MIN		- ai record for waveform min value
+#	$(WAVE):StdDev	- ai record for waveform std deviation
+#
+# Generally you'll want one instance here for each
+# period you include above
+file wave_proc.template
+{
+	pattern
+	{	WAVE				}
+	{	$(PV):Hist:LAST_N	}
+	{	$(PV):Hist:10MIN	}
+	{	$(PV):Hist:1HR		}
+	{	$(PV):Hist:24HR		}
+	{	$(PV):Hist:WEEK		}
+}

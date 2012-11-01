@@ -1,0 +1,8 @@
+include "base.dbd"
+
+function(RMS_Init)
+function(RMS_Process)
+variable(DEBUG_HIST)
+variable(DEBUG_POLAR)
+variable(DEBUG_RMS)
+registrar(RMS_Register)

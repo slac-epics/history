@@ -1,0 +1,10 @@
+#
+# Autosave template for history
+#
+# Syntax:	<pv_name>
+# Example:	TST:R00:IOC:00:HIGH_LIMIT 
+#
+
+# TODO:	Add a list of PV's which should be saved
+# periodically and restored when the IOC reboots
+

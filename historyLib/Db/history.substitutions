@@ -1,0 +1,16 @@
+#
+# history database substitutions file
+#
+
+# Generate history db file 
+#	Macros:
+#		TODO:	List here any macros used in the template
+#				Note which ones have defaults.
+file _history.template
+{
+	{
+		# Hack till msi supports empty substitutions
+		IOC		=	$(IOC),
+	}
+}
+

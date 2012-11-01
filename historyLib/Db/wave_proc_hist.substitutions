@@ -1,0 +1,58 @@
+#
+# wave_proc_hist.substitutions
+# This substitutions file sets the pattern for
+# processing a waveform to create the MAX, MIN,
+# RMS, and StdDev for each.
+# In addition, for each processed ai value,
+# it generates history waveforms to keep
+# recent history of each ai value for a variety
+# of timeframes.
+#
+# Macro names
+#	WAVE		- Name of waveform
+
+# Create waveform processing records
+file wave_proc.template
+{
+	{
+		WAVE		= $(WAVE)
+	}
+}
+
+# Create history PV's
+file pv_history.template
+{
+	pattern
+	{	NAME,		PERIOD,		PV				}
+
+	{	"LAST_N",	1,			"$(WAVE):AVG"		}
+	{	"10MIN",	600,		"$(WAVE):AVG"		}
+	{	"1HR",		3600,		"$(WAVE):AVG"		}
+	{	"24HR",		86400,		"$(WAVE):AVG"		}
+	{	"WEEK",		604800,		"$(WAVE):AVG"		}
+
+	{	"LAST_N",	1,			"$(WAVE):MAX"		}
+	{	"10MIN",	600,		"$(WAVE):MAX"		}
+	{	"1HR",		3600,		"$(WAVE):MAX"		}
+	{	"24HR",		86400,		"$(WAVE):MAX"		}
+	{	"WEEK",		604800,		"$(WAVE):MAX"		}
+
+	{	"LAST_N",	1,			"$(WAVE):MIN"		}
+	{	"10MIN",	600,		"$(WAVE):MIN"		}
+	{	"1HR",		3600,		"$(WAVE):MIN"		}
+	{	"24HR",		86400,		"$(WAVE):MIN"		}
+	{	"WEEK",		604800,		"$(WAVE):MIN"		}
+
+	{	"LAST_N",	1,			"$(WAVE):RMS"		}
+	{	"10MIN",	600,		"$(WAVE):RMS"		}
+	{	"1HR",		3600,		"$(WAVE):RMS"		}
+	{	"24HR",		86400,		"$(WAVE):RMS"		}
+	{	"WEEK",		604800,		"$(WAVE):RMS"		}
+
+	{	"LAST_N",	1,			"$(WAVE):StdDev"	}
+	{	"10MIN",	600,		"$(WAVE):StdDev"	}
+	{	"1HR",		3600,		"$(WAVE):StdDev"	}
+	{	"24HR",		86400,		"$(WAVE):StdDev"	}
+	{	"WEEK",		604800,		"$(WAVE):StdDev"	}
+
+}

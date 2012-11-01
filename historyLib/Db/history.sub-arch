@@ -1,0 +1,16 @@
+#
+# history archive substitutions file
+#
+
+# Generate history archive file 
+#	Macros:
+#		TODO:	List here any macros used in the template
+#				Note which ones have defaults.
+file archive_history.template
+{
+	{
+		# Hack till msi supports empty substitutions
+		IOC		=	$(IOC),
+	}
+}
+

@@ -1,0 +1,56 @@
+#
+# Template for generating aSub records which accumulate
+# a history of the specified PV over the specified time period.
+#
+#	Macros:
+#		PV			- Name of PV to track
+#		PERIOD		- Time period over which to retain history
+#		NAME		- Name of this time period
+#		DESC		- Description of Time Period, default "$(NAME) Hist"
+#		OUT			- Name of waveform PV where history is written
+#						Defaults to $(PV):Hist:$(NAME)
+#		N_SAMPLES	- Number of samples to keep, Output waveform's NELEM
+#						Defaults to 256
+#
+
+# History asub
+# Monitors an scalar value and records it's history
+#	over the specified time period.
+# The delay between samples is determined by the time
+# period divided by the size of the output array.
+#	Inputs:
+#		A	- a single scalar value of type double
+#		T	- unsigned integer time period in seconds
+#	Outputs:
+#		A	- Array of double's containing samples of A
+#				taken over the last T seconds.
+#
+record( aSub, "$(OUT=$(PV):Hist:$(NAME)):Sub" )
+{
+	field( DESC, "Keeps History of PV" )
+	field( SCAN, "Passive" )
+	field( PINI, "NO" )
+	field( INAM, "History_Init" )
+	field( SNAM, "History_Process" )
+
+	field( FTA,  "DOUBLE" )
+	field( NOA,  1 )
+	field( INPA, "$(PV) CP NMS" )
+
+	field( FTT, "DOUBLE" )
+	field( NOT, 1 )
+	field( INPT, "$(PERIOD)" )
+
+	field( FTVA, "DOUBLE" )
+	field( NOVA, $(N_SAMPLES=256) )
+	field( OUTA, "$(OUT=$(PV):Hist:$(NAME)) PP" )
+
+}
+
+record( waveform, "$(OUT=$(PV):Hist:$(NAME))")
+{
+    field( DESC, "$(DESC=$(NAME) Hist)" )
+	field( FTVL, "DOUBLE" )
+	field( NELM, $(N_SAMPLES=256) )
+}
+

@@ -1,0 +1,104 @@
+# EPICS Template for waveform processing
+#
+# This template is used to process waveform records
+# and write the results as new waveforms and scalar PV's
+#
+# Required Macro Definitions
+# IOC			- IOC name,	for example AMO:R13:IOC:14
+# WAVE			- Waveform name, for example AMO:KB1:WAV:01
+# EGU			- Engineering units: fs, C, mm, etc.
+# RMS_LOLO      - Low  alarm   limit for <PV>:Hist:LAST_N:RMS, default 0
+# RMS_LOW       - Low  warning limit for <PV>:Hist:LAST_N:RMS, default 0
+# RMS_HIGH 		- High warning limit for <PV>:Hist:LAST_N:RMS, default 0
+# RMS_HIHI 		- High alarm   limit for <PV>:Hist:LAST_N:RMS, default 0
+#
+
+# RMS asub
+# Processing this PV computes the RMS value for the input array
+# generating FitTime and Charge PV's for each cavity
+#
+# Inputs
+# INPA:	Waveform PV, Type DOUBLE, any length
+#
+# Outputs
+# OUTA:	RMS - WAVEFORM PV, Type DOUBLE, Len 1
+# OUTB:	MIN - WAVEFORM PV, Type DOUBLE, Len 1
+# OUTC:	MAX - WAVEFORM PV, Type DOUBLE, Len 1
+# OUTD:	AVG - WAVEFORM PV, Type DOUBLE, Len 1
+# OUTE: ?
+record( aSub, "$(WAVE):RMS:Sub" )
+{
+	field( DESC, "Calculate RMS for array" )
+	field( SCAN, "Passive" )
+	field( PINI, "NO" )
+	field( INAM, "RMS_Init" )
+	field( SNAM, "RMS_Process" )
+
+	field( FTA,  "DOUBLE" )
+	field( NOA,  "256" )
+	field( INPA, "$(WAVE) CPP NMS" )
+
+	field( FTVA, "DOUBLE" )
+	field( NOVA, 1 )
+	field( OUTA, "$(WAVE):RMS PP" )
+
+	field( FTVB, "DOUBLE" )
+	field( NOVB, 1 )
+	field( OUTB, "$(WAVE):MAX PP" )
+
+	field( FTVC, "DOUBLE" )
+	field( NOVC, 1 )
+	field( OUTC, "$(WAVE):MIN PP" )
+
+	field( FTVD, "DOUBLE" )
+	field( NOVD, 1 )
+	field( OUTD, "$(WAVE):AVG PP" )
+
+	field( FTVE, "DOUBLE" )
+	field( NOVE, 1 )
+	field( OUTE, "$(WAVE):StdDev PP" )
+
+}
+
+record( ai, "$(WAVE):MAX" )
+{
+	field( DESC, "MAX for waveform" )
+	field( EGU,  "$(EGU)" )
+}
+
+record( ai, "$(WAVE):AVG" )
+{
+	field( DESC, "AVG of waveform" )
+	field( EGU,  "$(EGU)" )
+}
+
+record( ai, "$(WAVE):MIN" )
+{
+	field( DESC, "MIN for waveform" )
+	field( EGU,  "$(EGU)" )
+}
+
+record( ai, "$(WAVE):RMS" )
+{
+	field( DESC, "RMS for waveform" )
+	field( LOLO, "$(RMS_LOLO)" )
+	field( LOW,  "$(RMS_LOW)"  )
+	field( HIGH, "$(RMS_HIGH)" )
+	field( HIHI, "$(RMS_HIHI)" )
+	field( EGU,  "$(EGU)" )
+	field( LLSV,  "MAJOR" )
+	field( LSV,   "MINOR" )
+}
+
+record( ai, "$(WAVE):StdDev" )
+{
+	field( DESC, "StdDev for waveform" )
+	field( EGU,  "$(EGU)" )
+}
+
+#record( fanout, "$(WAVE):RMS:Fanout" )
+#{
+#  field( LNK1, "$(WAVE):?" )
+#  field( LNK2, "$(WAVE):?" )
+#}
+
