@@ -10,12 +10,9 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install)
 # databases, templates, substitutions like this
-# DB += history.db
-DB += history.template
 DB += pv_history.template
 DB += wave_proc.template
 DB += ai_hist_proc.substitutions
-DB += history.substitutions
 DB += wave_proc_hist.substitutions
 
 #----------------------------------------------------

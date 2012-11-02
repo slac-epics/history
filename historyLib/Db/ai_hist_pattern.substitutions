@@ -1,5 +1,5 @@
 #
-# ai_hist_proc.substitutions
+# ai_hist_pattern.substitutions
 # This sample substitutions file sets the pattern for keeping
 # history waveforms for the specified analog input PV,
 # along with wave processing to create the MAX, MIN,

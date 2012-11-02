@@ -1,7 +1,0 @@
-
-
-record( stringout, "$(IOC):history:STATUS" )
-{
-	field( DTYP, "Soft Channel" )
-	field( VAL,	 "Unknown status" )
-}
