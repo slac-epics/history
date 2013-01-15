@@ -46,11 +46,11 @@ filePv "LOC\\$(SIG):View==0"
 sizeOfs 4
 numDsps 5
 displayFileName {
-  0 "fstimingScreens/emb-hist-viewer.edl"
-  1 "fstimingScreens/emb-hist-viewer.edl"
-  2 "fstimingScreens/emb-hist-viewer.edl"
-  3 "fstimingScreens/emb-hist-viewer.edl"
-  4 "fstimingScreens/emb-hist-viewer.edl"
+  0 "historyScreens/emb-hist-viewer.edl"
+  1 "historyScreens/emb-hist-viewer.edl"
+  2 "historyScreens/emb-hist-viewer.edl"
+  3 "historyScreens/emb-hist-viewer.edl"
+  4 "historyScreens/emb-hist-viewer.edl"
 }
 menuLabel {
   0 "LAST_N"

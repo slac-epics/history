@@ -70,8 +70,8 @@ buttonLabel "Limits"
 numPvs 4
 numDsps 2
 displayFileName {
-  0 "fstimingScreens/aiLimits.edl"
-  1 "fstimingScreens/histViewer.edl"
+  0 "historyScreens/aiLimits.edl"
+  1 "historyScreens/histViewer.edl"
 }
 menuLabel {
   0 "Limits"
