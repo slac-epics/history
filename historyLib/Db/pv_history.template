@@ -28,10 +28,11 @@
 record( aSub, "$(OUT=$(PV):Hist:$(NAME)):Sub" )
 {
 	field( DESC, "Keeps History of PV" )
-	field( SCAN, "Passive" )
+	field( SCAN, ".1 second" )
 	field( PINI, "NO" )
 	field( INAM, "History_Init" )
 	field( SNAM, "History_Process" )
+	field( TSEL, "$(PV).TIME" )
 
 	field( FTA,  "DOUBLE" )
 	field( NOA,  1 )

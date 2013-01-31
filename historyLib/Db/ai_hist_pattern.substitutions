@@ -6,7 +6,9 @@
 # RMS, and StdDev for each.
 #
 # Macro names
-#	PV		- Name of PV to track
+#	PV		- PV name for the ai record to capture
+#	NAME	- Name of capture interval
+#	PERIOD	- Seconds in capture interval
 
 # Create history PV's
 # This substitution creates two PV's per instance
@@ -17,10 +19,13 @@ file pv_history.template
 {
 	pattern
 	{	NAME,		PERIOD,		PV		}
-	{	"LAST_N",	1,			"$(PV)"	}
+	{	"LAST_N",	0,			"$(PV)"	}
 	{	"10MIN",	600,		"$(PV)"	}
+	{	"30MIN",	1800,		"$(PV)"	}
 	{	"1HR",		3600,		"$(PV)"	}
+	{	"6HR",		21600,		"$(PV)"	}
 	{	"24HR",		86400,		"$(PV)"	}
+	{	"3DAY",		259200,		"$(PV)"	}
 	{	"WEEK",		604800,		"$(PV)"	}
 }
 
@@ -32,6 +37,8 @@ file pv_history.template
 #	$(WAVE):MAX		- ai record for waveform max value
 #	$(WAVE):MIN		- ai record for waveform min value
 #	$(WAVE):StdDev	- ai record for waveform std deviation
+#	$(WAVE):Slope	- ai record for waveform least squares slope
+#	$(WAVE):Offset	- ai record for waveform least squares offset
 #
 # Generally you'll want one instance here for each
 # period you include above
@@ -41,7 +48,10 @@ file wave_proc.template
 	{	WAVE				}
 	{	$(PV):Hist:LAST_N	}
 	{	$(PV):Hist:10MIN	}
+	{	$(PV):Hist:30MIN	}
 	{	$(PV):Hist:1HR		}
+	{	$(PV):Hist:6HR		}
 	{	$(PV):Hist:24HR		}
+	{	$(PV):Hist:3DAY		}
 	{	$(PV):Hist:WEEK		}
 }
