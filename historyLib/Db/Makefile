@@ -29,6 +29,8 @@ REQ += history.sub-req
 # Archive files, templates, substitutions like this
 # ARCHIVE += archive_history.archive
 ARCHIVE += history.tpl-arch
+ARCHIVE += hist_LAST_N.tpl-arch
+ARCHIVE += wave_LAST_N.tpl-arch
 ARCHIVE += history.sub-arch
 
 include $(TOP)/configure/RULES

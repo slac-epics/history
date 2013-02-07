@@ -1,0 +1,10 @@
+# hist_LAST_N.tpl-arch, archive list for history PV's
+# Archives the calculated values for each PV's LAST_N arrays
+$(PV):Hist:LAST_N:AVG		1
+$(PV):Hist:LAST_N:MAX		1
+$(PV):Hist:LAST_N:MIN		1
+$(PV):Hist:LAST_N:RMS		1
+$(PV):Hist:LAST_N:StdDev	1
+$(PV):Hist:LAST_N:Slope		1
+$(PV):Hist:LAST_N:Offset	1
+
