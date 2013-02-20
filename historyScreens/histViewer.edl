@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1306
-y 358
+x 1137
+y 61
 w 596
 h 356
 font "helvetica-medium-r-12.0"
@@ -26,6 +26,32 @@ showGrid
 snapToGrid
 gridSize 4
 endScreenProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 2
+release 0
+x 16
+y 0
+w 256
+h 20
+fgColor index 14
+bgColor index 68
+topShadowColor index 45
+botShadowColor index 47
+font "helvetica-medium-r-14.0"
+invisible
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "historyScreens/aiLimits.edl"
+}
+symbols {
+  0 "PV=$(SIG)"
+}
+endObjectProperties
 
 # (Embedded Window)
 object activePipClass
@@ -106,7 +132,7 @@ minor 1
 release 0
 x 0
 y 0
-w 284
+w 268
 h 20
 font "helvetica-medium-r-18.0"
 fontAlign "center"
@@ -121,7 +147,7 @@ endObjectProperties
 object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 5
+minor 2
 release 0
 x 296
 y 0

@@ -12,6 +12,7 @@ include $(TOP)/configure/CONFIG
 # databases, templates, substitutions like this
 DB += pv_history.template
 DB += wave_proc.template
+DB += ai_hist.substitutions
 DB += ai_hist_pattern.db
 DB += ai_hist_pattern.substitutions
 DB += wave_proc_hist.db

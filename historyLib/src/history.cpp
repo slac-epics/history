@@ -47,9 +47,7 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 	pSub->dpvt							= pHistoryData;
 	pSub->neva							= 0;
 
-	double		*	pOut = static_cast<double *>( pSub->vala );
-	for ( epicsUInt32 i = 0; i < pSub->nova; ++i )
-		*pOut++ = 0.0;
+	memset( static_cast<double *>( pSub->vala ), 0, sizeof(double) );
 	return 0;
 }
 
@@ -76,8 +74,6 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	HistoryData	*	pHistoryData	= static_cast<HistoryData *>( pSub->dpvt );
 	assert( pSub->fta == DBR_DOUBLE );
 	double		*	pData			= static_cast<double *>( pSub->a );
-	assert( pSub->ftva == DBR_DOUBLE );
-	double		*	pOut			= static_cast<double *>( pSub->vala );
 
 	//	Calculate our sample interval and the time delta's
 	//	The asub record's TSEL is $(PV).TIME, so the asub's timestamp
@@ -116,6 +112,9 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 		// Keep current capture time
 		pHistoryData->m_TimePrior = curTime;
 
+	// Write the data to the output buffer
+	assert( pSub->ftva == DBR_DOUBLE );
+	double		*	pOut			= static_cast<double *>( pSub->vala );
 	if ( pSub->neva < pSub->nova )
 	{
 		//	Add the new data point
