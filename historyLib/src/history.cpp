@@ -3,6 +3,7 @@
 #include <sstream>
 #include <assert.h>
 #include <math.h>
+#include <string.h>
 #include <limits.h>
 
 #include <iocsh.h>
@@ -47,7 +48,7 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 	pSub->dpvt							= pHistoryData;
 	pSub->neva							= 0;
 
-	bzero( static_cast<double *>( pSub->vala ), pSub->nova * sizeof(double) );
+	memset( static_cast<double *>( pSub->vala ), 0, sizeof(double) );
 	return 0;
 }
 
