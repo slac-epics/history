@@ -47,7 +47,7 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 	pSub->dpvt							= pHistoryData;
 	pSub->neva							= 0;
 
-	memset( static_cast<double *>( pSub->vala ), 0, sizeof(double) );
+	bzero( static_cast<double *>( pSub->vala ), pSub->nova * sizeof(double) );
 	return 0;
 }
 
