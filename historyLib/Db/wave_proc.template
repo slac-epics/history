@@ -7,10 +7,6 @@
 # IOC			- IOC name,	for example AMO:R13:IOC:14
 # WAVE			- Waveform name, for example AMO:KB1:WAV:01
 # EGU			- Engineering units: fs, C, mm, etc.
-# RMS_LOLO      - Low  alarm   limit for <PV>:Hist:LAST_N:RMS, default 0
-# RMS_LOW       - Low  warning limit for <PV>:Hist:LAST_N:RMS, default 0
-# RMS_HIGH 		- High warning limit for <PV>:Hist:LAST_N:RMS, default 0
-# RMS_HIHI 		- High alarm   limit for <PV>:Hist:LAST_N:RMS, default 0
 #
 
 # RMS asub
@@ -93,10 +89,10 @@ record( ai, "$(WAVE):MIN" )
 record( ai, "$(WAVE):RMS" )
 {
 	field( DESC, "RMS for waveform" )
-	field( LOLO, "$(RMS_LOLO)" )
-	field( LOW,  "$(RMS_LOW)"  )
-	field( HIGH, "$(RMS_HIGH)" )
-	field( HIHI, "$(RMS_HIHI)" )
+	field( LOLO, "$(RMS_LOLO=0)" )
+	field( LOW,  "$(RMS_LOW=0)"  )
+	field( HIGH, "$(RMS_HIGH=0)" )
+	field( HIHI, "$(RMS_HIHI=0)" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
 	field( LLSV,  "MAJOR" )

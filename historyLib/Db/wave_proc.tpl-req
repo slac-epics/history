@@ -1,0 +1,12 @@
+#
+# Autosave template for history wave processing
+#
+$(WAVE):RMS.HHSV
+$(WAVE):RMS.HIGH
+$(WAVE):RMS.HIHI
+$(WAVE):RMS.HSV
+$(WAVE):RMS.LLSV
+$(WAVE):RMS.LOLO
+$(WAVE):RMS.LOW
+$(WAVE):RMS.LSV
+$(WAVE):RMS.PREC
