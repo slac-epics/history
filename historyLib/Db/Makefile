@@ -24,6 +24,7 @@ DB += wave_proc_hist.substitutions
 # REQ += autosave_history.req
 REQ += history.tpl-req
 REQ += history.sub-req
+REQ += wave_proc.tpl-req
 
 #----------------------------------------------------
 # Create and install (or just install)
