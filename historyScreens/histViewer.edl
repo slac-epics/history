@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1137
-y 61
+x 1888
+y 229
 w 596
-h 356
+h 370
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-bold-r-12.0"
 ctlFontAlign "center"
@@ -31,26 +31,30 @@ endScreenProperties
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 2
+minor 3
 release 0
-x 16
-y 0
-w 256
-h 20
+x 512
+y 4
+w 80
+h 36
 fgColor index 14
-bgColor index 68
-topShadowColor index 45
-botShadowColor index 47
-font "helvetica-medium-r-14.0"
-invisible
+bgColor index 6
+topShadowColor index 2
+botShadowColor index 13
+font "helvetica-medium-r-12.0"
+buttonLabel "Limits"
 numPvs 4
 numDsps 1
 displayFileName {
   0 "historyScreens/aiLimits.edl"
 }
+menuLabel {
+  0 "Limits"
+}
 symbols {
   0 "PV=$(SIG)"
 }
+icon
 endObjectProperties
 
 # (Embedded Window)
@@ -60,16 +64,15 @@ major 4
 minor 1
 release 0
 x 0
-y 20
-w 588
-h 328
+y 44
+w 576
+h 324
 fgColor index 14
 bgColor index 0
 topShadowColor index 0
 botShadowColor index 14
 displaySource "menu"
 filePv "LOC\\$(SIG):View==0"
-sizeOfs 4
 numDsps 8
 displayFileName {
   0 "historyScreens/emb-hist-viewer.edl"
@@ -130,14 +133,15 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 0
+x 8
 y 0
-w 268
+w 340
 h 20
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
 fgColor index 14
 bgColor index 5
+useDisplayBg
 value {
   "$(SIG)"
 }
@@ -147,14 +151,15 @@ endObjectProperties
 object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 2
+minor 5
 release 0
-x 296
-y 0
-w 300
+x 8
+y 20
+w 340
 h 20
 controlPv "$(SIG).DESC"
 font "helvetica-medium-r-12.0"
+fontAlign "center"
 fgColor index 15
 bgColor index 12
 limitsFromDb
@@ -162,5 +167,78 @@ nullColor index 0
 useHexPrefix
 newPos
 objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 364
+y 0
+w 140
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Current Value"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 364
+y 20
+w 140
+h 20
+controlPv "$(SIG)"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 15
+fgAlarm
+bgColor index 12
+limitsFromDb
+nullColor index 0
+useHexPrefix
+showUnits
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 576
+y 44
+w 16
+h 320
+lineColor index 14
+fillColor index 0
+numPoints 4
+xPoints {
+  0 576
+  1 592
+  2 592
+  3 576
+}
+yPoints {
+  0 44
+  1 44
+  2 364
+  3 364
+}
 endObjectProperties
 

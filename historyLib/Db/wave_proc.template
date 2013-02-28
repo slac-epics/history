@@ -120,9 +120,3 @@ record( ai, "$(WAVE):Offset" )
 	field( PREC, "4" )
 }
 
-#record( fanout, "$(WAVE):RMS:Fanout" )
-#{
-#  field( LNK1, "$(WAVE):?" )
-#  field( LNK2, "$(WAVE):?" )
-#}
-
