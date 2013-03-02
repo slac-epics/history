@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 2665
-y 1780
+x 54
+y 74
 w 417
 h 450
 font "helvetica-medium-r-12.0"
@@ -648,7 +648,7 @@ fgColor index 26
 bgColor index 5
 editable
 motifWidget
-precision 2
+precision 5
 nullColor index 40
 smartRefresh
 useHexPrefix

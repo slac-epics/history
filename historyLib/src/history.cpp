@@ -75,6 +75,12 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	HistoryData	*	pHistoryData	= static_cast<HistoryData *>( pSub->dpvt );
 	assert( pSub->fta == DBR_DOUBLE );
 	double		*	pData			= static_cast<double *>( pSub->a );
+	if ( isnan(*pData) )
+	{
+		if ( DEBUG_HIST >= 2 )
+			cout	<< string(pSub->name) << ": value is nan!"	<<	endl;
+		return 1;
+	}
 
 	//	Calculate our sample interval and the time delta's
 	//	The asub record's TSEL is $(PV).TIME, so the asub's timestamp
