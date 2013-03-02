@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 547
-y 507
-w 571
-h 278
+x 1888
+y 229
+w 596
+h 370
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-bold-r-12.0"
 ctlFontAlign "center"
@@ -21,11 +21,41 @@ ctlBgColor1 index 0
 ctlBgColor2 index 14
 topShadowColor index 0
 botShadowColor index 14
-title "History Viewer"
+title "$(SIG) History Viewer"
 showGrid
 snapToGrid
 gridSize 4
 endScreenProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 512
+y 4
+w 80
+h 36
+fgColor index 14
+bgColor index 6
+topShadowColor index 2
+botShadowColor index 13
+font "helvetica-medium-r-12.0"
+buttonLabel "Limits"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "historyScreens/aiLimits.edl"
+}
+menuLabel {
+  0 "Limits"
+}
+symbols {
+  0 "PV=$(SIG)"
+}
+icon
+endObjectProperties
 
 # (Embedded Window)
 object activePipClass
@@ -34,37 +64,45 @@ major 4
 minor 1
 release 0
 x 0
-y 20
-w 548
-h 248
+y 44
+w 576
+h 324
 fgColor index 14
 bgColor index 0
 topShadowColor index 0
 botShadowColor index 14
 displaySource "menu"
 filePv "LOC\\$(SIG):View==0"
-sizeOfs 4
-numDsps 5
+numDsps 8
 displayFileName {
-  0 "fstimingScreens/emb-hist-viewer.edl"
-  1 "fstimingScreens/emb-hist-viewer.edl"
-  2 "fstimingScreens/emb-hist-viewer.edl"
-  3 "fstimingScreens/emb-hist-viewer.edl"
-  4 "fstimingScreens/emb-hist-viewer.edl"
+  0 "historyScreens/emb-hist-viewer.edl"
+  1 "historyScreens/emb-hist-viewer.edl"
+  2 "historyScreens/emb-hist-viewer.edl"
+  3 "historyScreens/emb-hist-viewer.edl"
+  4 "historyScreens/emb-hist-viewer.edl"
+  5 "historyScreens/emb-hist-viewer.edl"
+  6 "historyScreens/emb-hist-viewer.edl"
+  7 "historyScreens/emb-hist-viewer.edl"
 }
 menuLabel {
   0 "LAST_N"
   1 "10MIN"
-  2 "1HR"
-  3 "24HR"
-  4 "WEEK"
+  2 "30MIN"
+  3 "1HR"
+  4 "6HR"
+  5 "24HR"
+  6 "3DAY"
+  7 "WEEK"
 }
 symbols {
   0 "SIG=$(SIG),DUR=LAST_N"
   1 "SIG=$(SIG),DUR=10MIN"
-  2 "SIG=$(SIG),DUR=1HR"
-  3 "SIG=$(SIG),DUR=24HR"
-  4 "SIG=$(SIG),DUR=WEEK"
+  2 "SIG=$(SIG),DUR=30MIN"
+  3 "SIG=$(SIG),DUR=1HR"
+  4 "SIG=$(SIG),DUR=6HR"
+  5 "SIG=$(SIG),DUR=24HR"
+  6 "SIG=$(SIG),DUR=3DAY"
+  7 "SIG=$(SIG),DUR=WEEK"
 }
 replaceSymbols {
   0 1
@@ -72,6 +110,9 @@ replaceSymbols {
   2 1
   3 1
   4 1
+  5 1
+  6 1
+  7 1
 }
 propagateMacros {
   0 0
@@ -79,6 +120,9 @@ propagateMacros {
   2 0
   3 0
   4 0
+  5 0
+  6 0
+  7 0
 }
 noScroll
 endObjectProperties
@@ -89,16 +133,112 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 0
+x 8
 y 0
-w 312
+w 340
 h 20
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
 fgColor index 14
 bgColor index 5
+useDisplayBg
 value {
   "$(SIG)"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 8
+y 20
+w 340
+h 20
+controlPv "$(SIG).DESC"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 15
+bgColor index 12
+limitsFromDb
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 364
+y 0
+w 140
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Current Value"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 364
+y 20
+w 140
+h 20
+controlPv "$(SIG)"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 15
+fgAlarm
+bgColor index 12
+limitsFromDb
+nullColor index 0
+useHexPrefix
+showUnits
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 576
+y 44
+w 16
+h 320
+lineColor index 14
+fillColor index 0
+numPoints 4
+xPoints {
+  0 576
+  1 592
+  2 592
+  3 576
+}
+yPoints {
+  0 44
+  1 44
+  2 364
+  3 364
 }
 endObjectProperties
 

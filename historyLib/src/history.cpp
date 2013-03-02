@@ -3,6 +3,7 @@
 #include <sstream>
 #include <assert.h>
 #include <math.h>
+#include <string.h>
 #include <limits.h>
 
 #include <iocsh.h>
@@ -47,9 +48,7 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 	pSub->dpvt							= pHistoryData;
 	pSub->neva							= 0;
 
-	double		*	pOut = static_cast<double *>( pSub->vala );
-	for ( epicsUInt32 i = 0; i < pSub->nova; ++i )
-		*pOut++ = 0.0;
+	memset( static_cast<double *>( pSub->vala ), 0, sizeof(double) );
 	return 0;
 }
 
@@ -76,22 +75,36 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	HistoryData	*	pHistoryData	= static_cast<HistoryData *>( pSub->dpvt );
 	assert( pSub->fta == DBR_DOUBLE );
 	double		*	pData			= static_cast<double *>( pSub->a );
-	assert( pSub->ftva == DBR_DOUBLE );
-	double		*	pOut			= static_cast<double *>( pSub->vala );
+	if ( isnan(*pData) )
+	{
+		if ( DEBUG_HIST >= 2 )
+			cout	<< string(pSub->name) << ": value is nan!"	<<	endl;
+		return 1;
+	}
 
-	//	Check the duration since the last data point
+	//	Calculate our sample interval and the time delta's
+	//	The asub record's TSEL is $(PV).TIME, so the asub's timestamp
+	//	will be updated each time from the PV.
 	assert( pSub->ftt == DBR_DOUBLE );
 	double		*	pTotalPeriod	= static_cast<double *>( pSub->t );
-	double			samplePeriod	= *pTotalPeriod / pSub->nova;
-	double			duration		= epicsTimeDiffInSeconds( &curTime, &pHistoryData->m_TimePrior );
+	double			sampleInterval	= *pTotalPeriod / pSub->nova;
+	double			curDiff			= epicsTimeDiffInSeconds( &curTime,	   &pHistoryData->m_TimePrior );
+	double			pvDiff			= epicsTimeDiffInSeconds( &pSub->time, &pHistoryData->m_TimePrior );
 
-	if ( duration < samplePeriod )
+	// A zero pvDiff indicates we've already seen this sample
+	bool			sameSample		= pvDiff == 0 ? true : false;
+
+	//	Check the duration since the last data point
+	// A non-zero sampleInterval indicates capture one sample per interval
+	// A zero sampleInterval indicates capture each sample once
+	if (	( curDiff < sampleInterval )
+		||	( sampleInterval == 0 && sameSample ) )
 	{
 		if ( DEBUG_HIST >= 5 )
 		{
 			cout	<< string(pSub->name)
-					<< ": Dur "			<<	duration
-					<< " shorter than "	<<	samplePeriod
+					<< ": Dur "			<<	curDiff
+					<< " shorter than "	<<	sampleInterval
 					<< endl; 
 		}
 
@@ -99,7 +112,16 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 		return 1;
 	}
 
-	pHistoryData->m_TimePrior = curTime;
+	if ( sampleInterval == 0 )
+		// Keep prior sample time
+		pHistoryData->m_TimePrior = pSub->time;
+	else
+		// Keep current capture time
+		pHistoryData->m_TimePrior = curTime;
+
+	// Write the data to the output buffer
+	assert( pSub->ftva == DBR_DOUBLE );
+	double		*	pOut			= static_cast<double *>( pSub->vala );
 	if ( pSub->neva < pSub->nova )
 	{
 		//	Add the new data point
@@ -134,7 +156,7 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	{
 		cout	<< string(pSub->name)
 				<< ", nPts = "		<<	pSub->neva
-				<< ", duration = "	<<	duration
+				<< ", curDiff = "	<<	curDiff
 				<< endl; 
 	}
 
@@ -240,20 +262,30 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 	double			rmsVal	= 0.0;
 	double			minVal	= LONG_MAX;
 	double			maxVal	= LONG_MIN;
-	double			avgVal	= 0;
-	double			stdDev	= 0;
+	double			avgVal	= 0.0;
+	double			stdDev	= 0.0;
+	double			sumX	= 0.0;
+	double			sumY	= 0.0;
+	double			sumXX	= 0.0;
+	double			sumXY	= 0.0;
+	double			sumYY	= 0.0;
+
 	double		*	pData	= static_cast<double *>( pSub->a );
 	for ( epicsUInt32 i = 0; i < pSub->noa; ++i )
 	{
 		double		dblVal	= *pData++;
 		minVal	= min( dblVal, minVal );
 		maxVal	= max( dblVal, maxVal );
-		rmsVal += dblVal * dblVal;
-		avgVal += dblVal;
-		// absVal += abs(intVal);
+
+		// Sums needed for least squares regression
+		sumX	+= i;
+		sumXX	+= i * i;
+		sumXY	+= i * dblVal;
+		sumY	+= dblVal;
+		sumYY	+= dblVal * dblVal;
 	}
-	rmsVal	=	sqrt( rmsVal / pSub->noa );
-	avgVal	/=	pSub->noa;
+	rmsVal	=	sqrt( sumYY / pSub->noa );
+	avgVal	=	sumY / pSub->noa;
 
 	//	Calc stdDev relative to avgVal
 	pData	= static_cast<double *>( pSub->a );
@@ -263,6 +295,12 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 		stdDev += (dblVal * dblVal);
 	}
 	stdDev	=	sqrt( stdDev / pSub->noa );
+
+	// Calculate the least squares regression
+	//	http://en.wikipedia.org/wiki/Simple_linear_regression
+	double			slope	=	(	(pSub->noa * sumXY - sumX * sumY)
+								/	(pSub->noa * sumXX - sumX * sumX) );
+	double			offset	= sumY / pSub->noa - slope * sumX / pSub->noa;
 
 	//	Write the output
 	double		*	pOut;
@@ -306,6 +344,22 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 		*pOut			= stdDev;
 	}
 
+	if ( pSub->ftvf == DBR_DOUBLE )
+	{
+		pSub->nevf		= 1;
+		pSub->novf		= 1;
+		pOut			= static_cast<double *>( pSub->valf );
+		*pOut			= slope;
+	}
+
+	if ( pSub->ftvg == DBR_DOUBLE )
+	{
+		pSub->nevg		= 1;
+		pSub->novg		= 1;
+		pOut			= static_cast<double *>( pSub->valg );
+		*pOut			= offset;
+	}
+
 	if ( DEBUG_RMS >= 3 )
 	{
 		cout	<< string(pSub->name)
@@ -314,6 +368,8 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 				<< ", minVal = "	<<	minVal
 				<< ", maxVal = "	<<	maxVal
 				<< ", stdDev = "	<<	stdDev
+				<< ", slope  = "	<<	slope
+				<< ", offset = "	<<	offset
 				<< endl; 
 	}
 

@@ -25,34 +25,66 @@ file pv_history.template
 	pattern
 	{	NAME,		PERIOD,		PV				}
 
-	{	"LAST_N",	1,			"$(WAVE):AVG"		}
+	{	"LAST_N",	0,			"$(WAVE):AVG"		}
 	{	"10MIN",	600,		"$(WAVE):AVG"		}
+	{	"30MIN",	1800,		"$(WAVE):AVG"		}
 	{	"1HR",		3600,		"$(WAVE):AVG"		}
+	{	"6HR",		21600,		"$(WAVE):AVG"		}
 	{	"24HR",		86400,		"$(WAVE):AVG"		}
+	{	"3DAY",		259200,		"$(WAVE):AVG"		}
 	{	"WEEK",		604800,		"$(WAVE):AVG"		}
 
-	{	"LAST_N",	1,			"$(WAVE):MAX"		}
+	{	"LAST_N",	0,			"$(WAVE):MAX"		}
 	{	"10MIN",	600,		"$(WAVE):MAX"		}
+	{	"30MIN",	1800,		"$(WAVE):MAX"		}
 	{	"1HR",		3600,		"$(WAVE):MAX"		}
+	{	"6HR",		21600,		"$(WAVE):MAX"		}
 	{	"24HR",		86400,		"$(WAVE):MAX"		}
+	{	"3DAY",		259200,		"$(WAVE):MAX"		}
 	{	"WEEK",		604800,		"$(WAVE):MAX"		}
 
-	{	"LAST_N",	1,			"$(WAVE):MIN"		}
+	{	"LAST_N",	0,			"$(WAVE):MIN"		}
 	{	"10MIN",	600,		"$(WAVE):MIN"		}
+	{	"30MIN",	1800,		"$(WAVE):MIN"		}
 	{	"1HR",		3600,		"$(WAVE):MIN"		}
+	{	"6HR",		21600,		"$(WAVE):MIN"		}
 	{	"24HR",		86400,		"$(WAVE):MIN"		}
+	{	"3DAY",		259200,		"$(WAVE):MIN"		}
 	{	"WEEK",		604800,		"$(WAVE):MIN"		}
 
-	{	"LAST_N",	1,			"$(WAVE):RMS"		}
+	{	"LAST_N",	0,			"$(WAVE):RMS"		}
 	{	"10MIN",	600,		"$(WAVE):RMS"		}
+	{	"30MIN",	1800,		"$(WAVE):RMS"		}
 	{	"1HR",		3600,		"$(WAVE):RMS"		}
+	{	"6HR",		21600,		"$(WAVE):RMS"		}
 	{	"24HR",		86400,		"$(WAVE):RMS"		}
+	{	"3DAY",		259200,		"$(WAVE):RMS"		}
 	{	"WEEK",		604800,		"$(WAVE):RMS"		}
 
-	{	"LAST_N",	1,			"$(WAVE):StdDev"	}
+	{	"LAST_N",	0,			"$(WAVE):StdDev"	}
 	{	"10MIN",	600,		"$(WAVE):StdDev"	}
+	{	"30MIN",	1800,		"$(WAVE):StdDev"	}
 	{	"1HR",		3600,		"$(WAVE):StdDev"	}
+	{	"6HR",		21600,		"$(WAVE):StdDev"	}
 	{	"24HR",		86400,		"$(WAVE):StdDev"	}
+	{	"3DAY",		259200,		"$(WAVE):StdDev"	}
 	{	"WEEK",		604800,		"$(WAVE):StdDev"	}
 
+	{	"LAST_N",	0,			"$(WAVE):Slope"		}
+	{	"10MIN",	600,		"$(WAVE):Slope"		}
+	{	"30MIN",	1800,		"$(WAVE):Slope"		}
+	{	"1HR",		3600,		"$(WAVE):Slope"		}
+	{	"6HR",		21600,		"$(WAVE):Slope"		}
+	{	"24HR",		86400,		"$(WAVE):Slope"		}
+	{	"3DAY",		259200,		"$(WAVE):Slope"		}
+	{	"WEEK",		604800,		"$(WAVE):Slope"		}
+
+	{	"LAST_N",	0,			"$(WAVE):Offset"	}
+	{	"10MIN",	600,		"$(WAVE):Offset"	}
+	{	"30MIN",	1800,		"$(WAVE):Offset"	}
+	{	"1HR",		3600,		"$(WAVE):Offset"	}
+	{	"6HR",		21600,		"$(WAVE):Offset"	}
+	{	"24HR",		86400,		"$(WAVE):Offset"	}
+	{	"3DAY",		259200,		"$(WAVE):Offset"	}
+	{	"WEEK",		604800,		"$(WAVE):Offset"	}
 }
