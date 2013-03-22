@@ -52,6 +52,6 @@ record( waveform, "$(OUT=$(PV):Hist:$(NAME))")
     field( DESC, "$(DESC=$(NAME) Hist)" )
 	field( FTVL, "DOUBLE" )
 	field( NELM, $(N_SAMPLES=256) )
-	field( TSEL, "$(PV).TIME" )
+#	field( TSEL, "$(PV).TIME" )
 }
 
