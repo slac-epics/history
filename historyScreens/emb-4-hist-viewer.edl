@@ -103,19 +103,21 @@ yPv {
   2 "$(SIG3):Hist:$(DUR)"
   3 "$(SIG4):Hist:$(DUR)"
 }
+lineThickness {
+  0 2
+  1 2
+}
 plotUpdateMode {
   0 "y"
   1 "y"
   2 "y"
   3 "y"
-  4 "y"
 }
 plotColor {
-  0 index 60
+  0 index 46
   1 index 16
   2 index 21
   3 index 26
-  4 index 46
 }
 endObjectProperties
 
@@ -148,9 +150,9 @@ x 128
 y 8
 w 20
 h 20
-lineColor index 60
+lineColor index 46
 fill
-fillColor index 60
+fillColor index 46
 lineWidth 0
 endObjectProperties
 

@@ -68,7 +68,7 @@ autoScaleBothDirections
 autoScaleUpdateMs 7000
 autoScaleThreshPct 80
 fgColor index 14
-bgColor index 0
+bgColor index 10
 gridColor index 5
 font "helvetica-bold-r-12.0"
 # Operating Modes
@@ -106,7 +106,7 @@ plotUpdateMode {
   1 "y"
 }
 plotColor {
-  0 index 60
+  0 index 46
   1 index 16
 }
 endObjectProperties
@@ -140,9 +140,9 @@ x 128
 y 8
 w 20
 h 20
-lineColor index 60
+lineColor index 46
 fill
-fillColor index 60
+fillColor index 46
 lineWidth 0
 endObjectProperties
 
