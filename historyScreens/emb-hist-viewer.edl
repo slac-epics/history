@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 887
-y 67
+x 493
+y 135
 w 599
 h 344
 font "helvetica-medium-r-12.0"
@@ -26,16 +26,128 @@ snapToGrid
 gridSize 4
 endScreenProperties
 
-# (Message Button)
-object activeMessageButtonClass
+# (Rectangle)
+object activeRectangleClass
 beginObjectProperties
 major 4
 minor 0
 release 0
 x 0
-y -8
-w 124
-h 68
+y 0
+w 100
+h 40
+lineColor index 14
+fillColor index 6
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 40
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 80
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 120
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 160
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 200
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 240
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 280
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 0
+w 112
+h 72
 fgColor index 14
 onColor index 6
 offColor index 5
@@ -54,11 +166,11 @@ endObjectProperties
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 2
+minor 3
 release 0
 x 0
 y 120
-w 124
+w 112
 h 40
 fgColor index 14
 bgColor index 6
@@ -70,8 +182,8 @@ buttonLabel "Limits"
 numPvs 4
 numDsps 2
 displayFileName {
-  0 "fstimingScreens/aiLimits.edl"
-  1 "fstimingScreens/histViewer.edl"
+  0 "historyScreens/aiLimits.edl"
+  1 "historyScreens/histViewer.edl"
 }
 menuLabel {
   0 "Limits"
@@ -99,13 +211,13 @@ endObjectProperties
 object xyGraphClass
 beginObjectProperties
 major 4
-minor 3
+minor 7
 release 0
 # Geometry
 x 100
 y 0
 w 488
-h 240
+h 320
 # Appearance
 border
 plotAreaBorder
@@ -173,20 +285,6 @@ value {
 }
 endObjectProperties
 
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 0
-y 0
-w 100
-h 40
-lineColor index 14
-fillColor index 6
-endObjectProperties
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
@@ -211,7 +309,7 @@ endObjectProperties
 object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 2
+minor 5
 release 0
 x 0
 y 60
@@ -230,20 +328,7 @@ smartRefresh
 useHexPrefix
 newPos
 objType "monitors"
-endObjectProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 0
-y 40
-w 100
-h 40
-lineColor index 14
-fillColor index 0
+noExecuteClipMask
 endObjectProperties
 
 # (Static Text)
@@ -270,7 +355,7 @@ endObjectProperties
 object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 2
+minor 5
 release 0
 x 0
 y 100
@@ -289,20 +374,7 @@ smartRefresh
 useHexPrefix
 newPos
 objType "monitors"
-endObjectProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 0
-y 80
-w 100
-h 40
-lineColor index 14
-fillColor index 0
+noExecuteClipMask
 endObjectProperties
 
 # (Static Text)
@@ -329,7 +401,7 @@ endObjectProperties
 object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 2
+minor 5
 release 0
 x 0
 y 140
@@ -348,20 +420,7 @@ smartRefresh
 useHexPrefix
 newPos
 objType "monitors"
-endObjectProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 0
-y 120
-w 100
-h 40
-lineColor index 14
-fillColor index 0
+noExecuteClipMask
 endObjectProperties
 
 # (Static Text)
@@ -388,7 +447,7 @@ endObjectProperties
 object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 2
+minor 5
 release 0
 x 0
 y 180
@@ -407,20 +466,7 @@ smartRefresh
 useHexPrefix
 newPos
 objType "monitors"
-endObjectProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 0
-y 160
-w 100
-h 40
-lineColor index 14
-fillColor index 0
+noExecuteClipMask
 endObjectProperties
 
 # (Static Text)
@@ -447,7 +493,7 @@ endObjectProperties
 object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 2
+minor 5
 release 0
 x 0
 y 220
@@ -466,19 +512,98 @@ smartRefresh
 useHexPrefix
 newPos
 objType "monitors"
+noExecuteClipMask
 endObjectProperties
 
-# (Rectangle)
-object activeRectangleClass
+# (Static Text)
+object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 0
-y 200
+y 240
 w 100
-h 40
-lineColor index 14
-fillColor index 0
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Slope"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 0
+y 260
+w 100
+h 20
+controlPv "$(SIG):Hist:$(DUR):Slope"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 280
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Offset"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 0
+y 300
+w 100
+h 20
+controlPv "$(SIG):Hist:$(DUR):Offset"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
 endObjectProperties
 

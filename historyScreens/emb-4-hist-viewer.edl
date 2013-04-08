@@ -1,0 +1,280 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 423
+y 40
+w 1280
+h 640
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-bold-r-12.0"
+ctlFontAlign "center"
+btnFont "helvetica-medium-r-14.0"
+btnFontAlign "center"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 14
+ctlFgColor2 index 0
+ctlBgColor1 index 0
+ctlBgColor2 index 14
+topShadowColor index 0
+botShadowColor index 14
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 0
+w 116
+h 76
+fgColor index 14
+onColor index 70
+offColor index 46
+topShadowColor index 68
+botShadowColor index 47
+controlPv "LOC\\$(SIG1):4-histView=0"
+pressValue "-1"
+onLabel "Menu"
+offLabel "Menu"
+3d
+invisible
+font "helvetica-medium-r-14.0"
+endObjectProperties
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+# Geometry
+x 4
+y 68
+w 1276
+h 568
+# Appearance
+border
+plotAreaBorder
+autoScaleBothDirections
+autoScaleUpdateMs 7000
+autoScaleThreshPct 80
+fgColor index 14
+bgColor index 0
+gridColor index 5
+font "helvetica-bold-r-12.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 256
+updateTimerMs 1000
+# X axis properties
+showXAxis
+xAxisSrc "fromUser"
+xMin 0
+xMax 255
+xLabelIntervals 2
+xMajorsPerLabel 2
+xMinorsPerMajor 2
+xShowLabelGrid
+# Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+yMax 1
+yLabelIntervals 2
+yMajorsPerLabel 2
+yMinorsPerMajor 2
+yShowLabelGrid
+# Y2 axis properties
+y2AxisSrc "AutoScale"
+y2Max 1
+# Trace Properties
+numTraces 4
+yPv {
+  0 "$(SIG1):Hist:$(DUR)"
+  1 "$(SIG2):Hist:$(DUR)"
+  2 "$(SIG3):Hist:$(DUR)"
+  3 "$(SIG4):Hist:$(DUR)"
+}
+plotUpdateMode {
+  0 "y"
+  1 "y"
+  2 "y"
+  3 "y"
+  4 "y"
+}
+plotColor {
+  0 index 60
+  1 index 16
+  2 index 21
+  3 index 26
+  4 index 46
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 0
+w 96
+h 68
+font "helvetica-bold-r-18.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(DUR)"
+}
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 128
+y 8
+w 20
+h 20
+lineColor index 60
+fill
+fillColor index 60
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 160
+y 8
+w 288
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(SIG1)"
+}
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 128
+y 36
+w 20
+h 20
+lineColor index 16
+fill
+fillColor index 16
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 160
+y 36
+w 288
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(SIG2)"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 544
+y 8
+w 288
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(SIG3)"
+}
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 512
+y 8
+w 20
+h 20
+lineColor index 21
+fill
+fillColor index 21
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 544
+y 36
+w 288
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(SIG4)"
+}
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 512
+y 36
+w 20
+h 20
+lineColor index 26
+fill
+fillColor index 26
+lineWidth 0
+endObjectProperties
+

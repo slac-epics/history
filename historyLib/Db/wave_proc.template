@@ -7,10 +7,6 @@
 # IOC			- IOC name,	for example AMO:R13:IOC:14
 # WAVE			- Waveform name, for example AMO:KB1:WAV:01
 # EGU			- Engineering units: fs, C, mm, etc.
-# RMS_LOLO      - Low  alarm   limit for <PV>:Hist:LAST_N:RMS, default 0
-# RMS_LOW       - Low  warning limit for <PV>:Hist:LAST_N:RMS, default 0
-# RMS_HIGH 		- High warning limit for <PV>:Hist:LAST_N:RMS, default 0
-# RMS_HIHI 		- High alarm   limit for <PV>:Hist:LAST_N:RMS, default 0
 #
 
 # RMS asub
@@ -21,11 +17,13 @@
 # INPA:	Waveform PV, Type DOUBLE, any length
 #
 # Outputs
-# OUTA:	RMS - WAVEFORM PV, Type DOUBLE, Len 1
-# OUTB:	MIN - WAVEFORM PV, Type DOUBLE, Len 1
-# OUTC:	MAX - WAVEFORM PV, Type DOUBLE, Len 1
-# OUTD:	AVG - WAVEFORM PV, Type DOUBLE, Len 1
-# OUTE: ?
+# OUTA:	RMS    - ai PV - RMS over all samples
+# OUTB:	MIN    - ai PV - Min of all samples
+# OUTC:	MAX    - ai PV - Max of all samples
+# OUTD:	AVG    - ai PV - Average sample value
+# OUTE: StdDev - ai PV - Std deviation 
+# OUTF: Slope  - ai PV - Slope of linear least squares fit
+# OUTG: Offset - ai PV - Offset of linear least squares fit
 record( aSub, "$(WAVE):RMS:Sub" )
 {
 	field( DESC, "Calculate RMS for array" )
@@ -58,34 +56,45 @@ record( aSub, "$(WAVE):RMS:Sub" )
 	field( NOVE, 1 )
 	field( OUTE, "$(WAVE):StdDev PP" )
 
+	field( FTVF, "DOUBLE" )
+	field( NOVF, 1 )
+	field( OUTF, "$(WAVE):Slope PP" )
+
+	field( FTVG, "DOUBLE" )
+	field( NOVG, 1 )
+	field( OUTG, "$(WAVE):Offset PP" )
 }
 
 record( ai, "$(WAVE):MAX" )
 {
 	field( DESC, "MAX for waveform" )
 	field( EGU,  "$(EGU)" )
+	field( PREC, "4" )
 }
 
 record( ai, "$(WAVE):AVG" )
 {
 	field( DESC, "AVG of waveform" )
 	field( EGU,  "$(EGU)" )
+	field( PREC, "4" )
 }
 
 record( ai, "$(WAVE):MIN" )
 {
 	field( DESC, "MIN for waveform" )
 	field( EGU,  "$(EGU)" )
+	field( PREC, "4" )
 }
 
 record( ai, "$(WAVE):RMS" )
 {
 	field( DESC, "RMS for waveform" )
-	field( LOLO, "$(RMS_LOLO)" )
-	field( LOW,  "$(RMS_LOW)"  )
-	field( HIGH, "$(RMS_HIGH)" )
-	field( HIHI, "$(RMS_HIHI)" )
+	field( LOLO, "$(RMS_LOLO=0)" )
+	field( LOW,  "$(RMS_LOW=0)"  )
+	field( HIGH, "$(RMS_HIGH=0)" )
+	field( HIHI, "$(RMS_HIHI=0)" )
 	field( EGU,  "$(EGU)" )
+	field( PREC, "4" )
 	field( LLSV,  "MAJOR" )
 	field( LSV,   "MINOR" )
 }
@@ -94,11 +103,20 @@ record( ai, "$(WAVE):StdDev" )
 {
 	field( DESC, "StdDev for waveform" )
 	field( EGU,  "$(EGU)" )
+	field( PREC, "4" )
 }
 
-#record( fanout, "$(WAVE):RMS:Fanout" )
-#{
-#  field( LNK1, "$(WAVE):?" )
-#  field( LNK2, "$(WAVE):?" )
-#}
+record( ai, "$(WAVE):Slope" )
+{
+	field( DESC, "Best fit linear slope" )
+	field( EGU,  "$(EGU)/s" )
+	field( PREC, "4" )
+}
+
+record( ai, "$(WAVE):Offset" )
+{
+	field( DESC, "Offset of least squares fit" )
+	field( EGU,  "$(EGU)" )
+	field( PREC, "4" )
+}
 

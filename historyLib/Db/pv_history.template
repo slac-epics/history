@@ -28,7 +28,7 @@
 record( aSub, "$(OUT=$(PV):Hist:$(NAME)):Sub" )
 {
 	field( DESC, "Keeps History of PV" )
-	field( SCAN, "Passive" )
+	field( SCAN, ".1 second" )
 	field( PINI, "NO" )
 	field( INAM, "History_Init" )
 	field( SNAM, "History_Process" )
@@ -52,5 +52,6 @@ record( waveform, "$(OUT=$(PV):Hist:$(NAME))")
     field( DESC, "$(DESC=$(NAME) Hist)" )
 	field( FTVL, "DOUBLE" )
 	field( NELM, $(N_SAMPLES=256) )
+#	field( TSEL, "$(PV).TIME" )
 }
 
