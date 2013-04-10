@@ -106,7 +106,7 @@ plotUpdateMode {
   1 "y"
 }
 plotColor {
-  0 index 30
+  0 index 26
   1 index 16
 }
 endObjectProperties
@@ -140,9 +140,9 @@ x 128
 y 8
 w 20
 h 20
-lineColor index 30
+lineColor index 26
 fill
-fillColor index 30
+fillColor index 26
 lineWidth 0
 endObjectProperties
 
@@ -264,9 +264,9 @@ x 512
 y 36
 w 20
 h 20
-lineColor index 26
+lineColor index 30
 fill
-fillColor index 26
+fillColor index 30
 lineWidth 0
 endObjectProperties
 
@@ -327,7 +327,7 @@ plotUpdateMode {
 }
 plotColor {
   0 index 21
-  1 index 26
+  1 index 30
 }
 endObjectProperties
 

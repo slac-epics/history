@@ -225,7 +225,7 @@ autoScaleBothDirections
 autoScaleUpdateMs 7000
 autoScaleThreshPct 80
 fgColor index 14
-bgColor index 0
+bgColor index 10
 gridColor index 5
 font "helvetica-bold-r-12.0"
 # Operating Modes

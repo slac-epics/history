@@ -68,7 +68,7 @@ autoScaleBothDirections
 autoScaleUpdateMs 7000
 autoScaleThreshPct 80
 fgColor index 14
-bgColor index 0
+bgColor index 10
 gridColor index 5
 font "helvetica-bold-r-12.0"
 # Operating Modes
@@ -104,8 +104,8 @@ yPv {
   3 "$(SIG4):Hist:$(DUR)"
 }
 lineThickness {
-  0 2
-  1 2
+  0 1
+  1 1
 }
 plotUpdateMode {
   0 "y"
@@ -114,10 +114,10 @@ plotUpdateMode {
   3 "y"
 }
 plotColor {
-  0 index 46
+  0 index 26
   1 index 16
   2 index 21
-  3 index 26
+  3 index 30
 }
 endObjectProperties
 
@@ -150,9 +150,9 @@ x 128
 y 8
 w 20
 h 20
-lineColor index 46
+lineColor index 26
 fill
-fillColor index 46
+fillColor index 26
 lineWidth 0
 endObjectProperties
 
@@ -274,9 +274,9 @@ x 512
 y 36
 w 20
 h 20
-lineColor index 26
+lineColor index 30
 fill
-fillColor index 26
+fillColor index 30
 lineWidth 0
 endObjectProperties
 

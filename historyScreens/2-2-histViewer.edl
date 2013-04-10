@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 8
-y 139
+x 1284
+y 49
 w 1256
 h 854
 font "helvetica-medium-r-12.0"
@@ -114,6 +114,35 @@ bgColor index 5
 useDisplayBg
 value {
   "$(TITLE)"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 1148
+y 8
+w 92
+h 24
+fgColor index 14
+bgColor index 3
+topShadowColor index 2
+botShadowColor index 14
+font "helvetica-medium-r-14.0"
+buttonLabel "Home"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "$(HOME)"
+}
+menuLabel {
+  0 "Home"
+}
+replaceSymbols {
+  0 1
 }
 endObjectProperties
 
