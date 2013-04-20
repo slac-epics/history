@@ -15,6 +15,7 @@
 #include <dbAddr.h>
 #include <dbAccess.h>
 #include <recGbl.h>
+#include <alarm.h>
 #include <error.h>
 
 #include "history.h"
