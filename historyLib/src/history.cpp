@@ -14,6 +14,8 @@
 #include <aSubRecord.h>
 #include <dbAddr.h>
 #include <dbAccess.h>
+#include <recGbl.h>
+#include <error.h>
 
 #include "history.h"
 
@@ -79,6 +81,7 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	{
 		if ( DEBUG_HIST >= 2 )
 			cout	<< string(pSub->name) << ": value is nan!"	<<	endl;
+		recGblSetSevr( pSub, CALC_ALARM, INVALID_ALARM );
 		return 1;
 	}
 
@@ -109,6 +112,7 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 		}
 
 		// Return 1 to suppress output processing
+		recGblResetAlarms( pSub );
 		return 1;
 	}
 
@@ -160,6 +164,7 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 				<< endl; 
 	}
 
+	recGblResetAlarms( pSub );
 	// Note: Must return 0 or aSubRecord.c won't update outputs
 	return 0;
 }
