@@ -180,30 +180,24 @@ font "helvetica-medium-r-14.0"
 invisible
 buttonLabel "Limits"
 numPvs 4
-numDsps 2
+numDsps 1
 displayFileName {
   0 "historyScreens/aiLimits.edl"
-  1 "historyScreens/histViewer.edl"
 }
 menuLabel {
   0 "Limits"
-  1 "History"
 }
 setPosition {
   0 "button"
-  1 "button"
 }
 symbols {
   0 "PV=$(SIG):Hist:$(DUR):RMS"
-  1 "SIG=$(SIG):Hist:$(DUR):RMS,DUR=LAST_N"
 }
 replaceSymbols {
   0 1
-  1 1
 }
 propagateMacros {
   0 0
-  1 0
 }
 endObjectProperties
 
@@ -230,13 +224,13 @@ gridColor index 5
 font "helvetica-bold-r-12.0"
 # Operating Modes
 plotMode "plotLastNPts"
-nPts 256
+nPts 300
 updateTimerMs 50
 # X axis properties
 showXAxis
 xAxisSrc "fromUser"
 xMin 0
-xMax 255
+xMax 299
 xLabelIntervals 2
 xMajorsPerLabel 2
 xMinorsPerMajor 2

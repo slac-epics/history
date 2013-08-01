@@ -23,10 +23,11 @@ file wave_proc.template
 file pv_history.template
 {
 	pattern
-	{	NAME,		PERIOD,		PV				}
+	{	NAME,		PERIOD,		PV					}
 
 	{	"LAST_N",	0,			"$(WAVE):AVG"		}
-	{	"10MIN",	600,		"$(WAVE):AVG"		}
+	{	"1MIN",		60,			"$(WAVE):AVG"		}
+	{	"6MIN",		360,		"$(WAVE):AVG"		}
 	{	"30MIN",	1800,		"$(WAVE):AVG"		}
 	{	"1HR",		3600,		"$(WAVE):AVG"		}
 	{	"6HR",		21600,		"$(WAVE):AVG"		}
@@ -35,7 +36,8 @@ file pv_history.template
 	{	"WEEK",		604800,		"$(WAVE):AVG"		}
 
 	{	"LAST_N",	0,			"$(WAVE):MAX"		}
-	{	"10MIN",	600,		"$(WAVE):MAX"		}
+	{	"1MIN",		60,			"$(WAVE):MAX"		}
+	{	"6MIN",		360,		"$(WAVE):MAX"		}
 	{	"30MIN",	1800,		"$(WAVE):MAX"		}
 	{	"1HR",		3600,		"$(WAVE):MAX"		}
 	{	"6HR",		21600,		"$(WAVE):MAX"		}
@@ -44,7 +46,8 @@ file pv_history.template
 	{	"WEEK",		604800,		"$(WAVE):MAX"		}
 
 	{	"LAST_N",	0,			"$(WAVE):MIN"		}
-	{	"10MIN",	600,		"$(WAVE):MIN"		}
+	{	"1MIN",		60,			"$(WAVE):MIN"		}
+	{	"6MIN",		360,		"$(WAVE):MIN"		}
 	{	"30MIN",	1800,		"$(WAVE):MIN"		}
 	{	"1HR",		3600,		"$(WAVE):MIN"		}
 	{	"6HR",		21600,		"$(WAVE):MIN"		}
@@ -53,7 +56,8 @@ file pv_history.template
 	{	"WEEK",		604800,		"$(WAVE):MIN"		}
 
 	{	"LAST_N",	0,			"$(WAVE):RMS"		}
-	{	"10MIN",	600,		"$(WAVE):RMS"		}
+	{	"1MIN",		60,			"$(WAVE):RMS"		}
+	{	"6MIN",		360,		"$(WAVE):RMS"		}
 	{	"30MIN",	1800,		"$(WAVE):RMS"		}
 	{	"1HR",		3600,		"$(WAVE):RMS"		}
 	{	"6HR",		21600,		"$(WAVE):RMS"		}
@@ -62,7 +66,8 @@ file pv_history.template
 	{	"WEEK",		604800,		"$(WAVE):RMS"		}
 
 	{	"LAST_N",	0,			"$(WAVE):StdDev"	}
-	{	"10MIN",	600,		"$(WAVE):StdDev"	}
+	{	"1MIN",		60,			"$(WAVE):StdDev"	}
+	{	"6MIN",		360,		"$(WAVE):StdDev"	}
 	{	"30MIN",	1800,		"$(WAVE):StdDev"	}
 	{	"1HR",		3600,		"$(WAVE):StdDev"	}
 	{	"6HR",		21600,		"$(WAVE):StdDev"	}
@@ -71,7 +76,8 @@ file pv_history.template
 	{	"WEEK",		604800,		"$(WAVE):StdDev"	}
 
 	{	"LAST_N",	0,			"$(WAVE):Slope"		}
-	{	"10MIN",	600,		"$(WAVE):Slope"		}
+	{	"1MIN",		60,			"$(WAVE):Slope"		}
+	{	"6MIN",		360,		"$(WAVE):Slope"		}
 	{	"30MIN",	1800,		"$(WAVE):Slope"		}
 	{	"1HR",		3600,		"$(WAVE):Slope"		}
 	{	"6HR",		21600,		"$(WAVE):Slope"		}
@@ -80,7 +86,8 @@ file pv_history.template
 	{	"WEEK",		604800,		"$(WAVE):Slope"		}
 
 	{	"LAST_N",	0,			"$(WAVE):Offset"	}
-	{	"10MIN",	600,		"$(WAVE):Offset"	}
+	{	"1MIN",		60,			"$(WAVE):Offset"	}
+	{	"6MIN",		360,		"$(WAVE):Offset"	}
 	{	"30MIN",	1800,		"$(WAVE):Offset"	}
 	{	"1HR",		3600,		"$(WAVE):Offset"	}
 	{	"6HR",		21600,		"$(WAVE):Offset"	}

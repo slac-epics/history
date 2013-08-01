@@ -73,13 +73,13 @@ gridColor index 5
 font "helvetica-bold-r-12.0"
 # Operating Modes
 plotMode "plotLastNPts"
-nPts 256
+nPts 300
 updateTimerMs 1000
 # X axis properties
 showXAxis
 xAxisSrc "fromUser"
 xMin 0
-xMax 255
+xMax 299
 xLabelIntervals 2
 xMajorsPerLabel 2
 xMinorsPerMajor 2

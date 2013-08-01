@@ -14,13 +14,16 @@
 # This substitution creates two PV's per instance
 #   $(PV):Hist:$(NAME):Sub	- aSub record to do processing
 #	$(PV):Hist:$(NAME)		- waveform record for the history data
-# Customize as desired with different periods
+#
+# Customize as desired with different time periods, however
+# custom time period's will require custom screens as well.
 file pv_history.template
 {
 	pattern
 	{	NAME,		PERIOD,		PV		}
 	{	"LAST_N",	0,			"$(PV)"	}
-	{	"10MIN",	600,		"$(PV)"	}
+	{	"1MIN",		60,			"$(PV)"	}
+	{	"6MIN",		360,		"$(PV)"	}
 	{	"30MIN",	1800,		"$(PV)"	}
 	{	"1HR",		3600,		"$(PV)"	}
 	{	"6HR",		21600,		"$(PV)"	}
@@ -47,7 +50,8 @@ file wave_proc.template
 	pattern
 	{	WAVE				}
 	{	$(PV):Hist:LAST_N	}
-	{	$(PV):Hist:10MIN	}
+	{	$(PV):Hist:1MIN		}
+	{	$(PV):Hist:6MIN		}
 	{	$(PV):Hist:30MIN	}
 	{	$(PV):Hist:1HR		}
 	{	$(PV):Hist:6HR		}

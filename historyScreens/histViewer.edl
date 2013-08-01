@@ -73,7 +73,7 @@ topShadowColor index 0
 botShadowColor index 14
 displaySource "menu"
 filePv "LOC\\$(SIG):View=0"
-numDsps 8
+numDsps 9
 displayFileName {
   0 "historyScreens/emb-hist-viewer.edl"
   1 "historyScreens/emb-hist-viewer.edl"
@@ -83,26 +83,29 @@ displayFileName {
   5 "historyScreens/emb-hist-viewer.edl"
   6 "historyScreens/emb-hist-viewer.edl"
   7 "historyScreens/emb-hist-viewer.edl"
+  8 "historyScreens/emb-hist-viewer.edl"
 }
 menuLabel {
   0 "LAST_N"
-  1 "10MIN"
-  2 "30MIN"
-  3 "1HR"
-  4 "6HR"
-  5 "24HR"
-  6 "3DAY"
-  7 "WEEK"
+  1 "1MIN"
+  2 "6MIN"
+  3 "30MIN"
+  4 "1HR"
+  5 "6HR"
+  6 "24HR"
+  7 "3DAY"
+  8 "WEEK"
 }
 symbols {
   0 "SIG=$(SIG),DUR=LAST_N"
-  1 "SIG=$(SIG),DUR=10MIN"
-  2 "SIG=$(SIG),DUR=30MIN"
-  3 "SIG=$(SIG),DUR=1HR"
-  4 "SIG=$(SIG),DUR=6HR"
-  5 "SIG=$(SIG),DUR=24HR"
-  6 "SIG=$(SIG),DUR=3DAY"
-  7 "SIG=$(SIG),DUR=WEEK"
+  1 "SIG=$(SIG),DUR=1MIN"
+  2 "SIG=$(SIG),DUR=6MIN"
+  3 "SIG=$(SIG),DUR=30MIN"
+  4 "SIG=$(SIG),DUR=1HR"
+  5 "SIG=$(SIG),DUR=6HR"
+  6 "SIG=$(SIG),DUR=24HR"
+  7 "SIG=$(SIG),DUR=3DAY"
+  8 "SIG=$(SIG),DUR=WEEK"
 }
 replaceSymbols {
   0 1
@@ -113,6 +116,7 @@ replaceSymbols {
   5 1
   6 1
   7 1
+  8 1
 }
 propagateMacros {
   0 0
@@ -123,6 +127,7 @@ propagateMacros {
   5 0
   6 0
   7 0
+  8 0
 }
 noScroll
 endObjectProperties

@@ -8,13 +8,21 @@ $(PV):Hist:LAST_N:StdDev	1
 $(PV):Hist:LAST_N:Slope		1
 $(PV):Hist:LAST_N:Offset	1
 
-$(PV):Hist:10MIN:AVG		1
-$(PV):Hist:10MIN:MAX		1
-$(PV):Hist:10MIN:MIN		1
-$(PV):Hist:10MIN:RMS		1
-$(PV):Hist:10MIN:StdDev		1
-$(PV):Hist:10MIN:Slope		1
-$(PV):Hist:10MIN:Offset		1
+$(PV):Hist:1MIN:AVG			1
+$(PV):Hist:1MIN:MAX			1
+$(PV):Hist:1MIN:MIN			1
+$(PV):Hist:1MIN:RMS			1
+$(PV):Hist:1MIN:StdDev		1
+$(PV):Hist:1MIN:Slope		1
+$(PV):Hist:1MIN:Offset		1
+
+$(PV):Hist:6MIN:AVG			1
+$(PV):Hist:6MIN:MAX			1
+$(PV):Hist:6MIN:MIN			1
+$(PV):Hist:6MIN:RMS			1
+$(PV):Hist:6MIN:StdDev		1
+$(PV):Hist:6MIN:Slope		1
+$(PV):Hist:6MIN:Offset		1
 
 $(PV):Hist:30MIN:AVG		1
 $(PV):Hist:30MIN:MAX		1

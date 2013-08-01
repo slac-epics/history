@@ -4,10 +4,11 @@
 # and write the results as new waveforms and scalar PV's
 #
 # Required Macro Definitions
-# IOC			- IOC name,	for example AMO:R13:IOC:14
 # WAVE			- Waveform name, for example AMO:KB1:WAV:01
 # EGU			- Engineering units: fs, C, mm, etc.
 #
+# Optional macros
+# NELM          - Number of elements per history array (default 300)
 
 # RMS asub
 # Processing this PV computes the RMS value for the input array
@@ -33,7 +34,7 @@ record( aSub, "$(WAVE):RMS:Sub" )
 	field( SNAM, "RMS_Process" )
 
 	field( FTA,  "DOUBLE" )
-	field( NOA,  "256" )
+	field( NOA,  "$(NELM=300)" )
 	field( INPA, "$(WAVE) CPP NMS" )
 
 	field( FTVA, "DOUBLE" )

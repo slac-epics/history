@@ -10,7 +10,7 @@
 #		OUT			- Name of waveform PV where history is written
 #						Defaults to $(PV):Hist:$(NAME)
 #		N_SAMPLES	- Number of samples to keep, Output waveform's NELEM
-#						Defaults to 256
+#						Defaults to 300
 #
 
 # History asub
@@ -42,7 +42,7 @@ record( aSub, "$(OUT=$(PV):Hist:$(NAME)):Sub" )
 	field( INPT, "$(PERIOD)" )
 
 	field( FTVA, "DOUBLE" )
-	field( NOVA, $(N_SAMPLES=256) )
+	field( NOVA, $(N_SAMPLES=300) )
 	field( OUTA, "$(OUT=$(PV):Hist:$(NAME)) PP" )
 
 }
@@ -51,7 +51,7 @@ record( waveform, "$(OUT=$(PV):Hist:$(NAME))")
 {
     field( DESC, "$(DESC=$(NAME) Hist)" )
 	field( FTVL, "DOUBLE" )
-	field( NELM, $(N_SAMPLES=256) )
-#	field( TSEL, "$(PV).TIME" )
+	field( NELM, $(N_SAMPLES=300) )
+	field( TSEL, "$(PV).TIME" )
 }
 
