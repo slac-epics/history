@@ -22,7 +22,7 @@ edm  -eolc								\
 -m "SIG4=$SIG4"							\
 -m "DUR=LAST_N"							\
 -m "TITLE=Development"					\
-historyScreens/emb-2-2-hist-viewer.edl	\
-historyScreens/2-2-histViewer.edl		\
+historyScreens/emb-small-2-2-hist-viewer.edl	\
+historyScreens/small-2-2-histViewer.edl		\
 &
 

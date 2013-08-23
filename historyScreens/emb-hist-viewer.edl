@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 493
-y 135
+x 538
+y 276
 w 599
 h 344
 font "helvetica-medium-r-12.0"
@@ -138,69 +138,6 @@ lineColor index 14
 fillColor index 0
 endObjectProperties
 
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 0
-y 0
-w 112
-h 72
-fgColor index 14
-onColor index 6
-offColor index 5
-topShadowColor index 1
-botShadowColor index 14
-controlPv "LOC\\$(SIG):View=0"
-pressValue "-1"
-onLabel "Menu"
-offLabel "Menu"
-3d
-invisible
-font "helvetica-medium-r-14.0"
-endObjectProperties
-
-# (Related Display)
-object relatedDisplayClass
-beginObjectProperties
-major 4
-minor 3
-release 0
-x 0
-y 120
-w 112
-h 40
-fgColor index 14
-bgColor index 6
-topShadowColor index 1
-botShadowColor index 14
-font "helvetica-medium-r-14.0"
-invisible
-buttonLabel "Limits"
-numPvs 4
-numDsps 1
-displayFileName {
-  0 "historyScreens/aiLimits.edl"
-}
-menuLabel {
-  0 "Limits"
-}
-setPosition {
-  0 "button"
-}
-symbols {
-  0 "PV=$(SIG):Hist:$(DUR):RMS"
-}
-replaceSymbols {
-  0 1
-}
-propagateMacros {
-  0 0
-}
-endObjectProperties
-
 # (X-Y Graph)
 object xyGraphClass
 beginObjectProperties
@@ -256,26 +193,6 @@ plotUpdateMode {
 }
 plotColor {
   0 index 26
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 0
-y 0
-w 100
-h 40
-font "helvetica-bold-r-18.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 5
-useDisplayBg
-value {
-  "$(DUR)"
 }
 endObjectProperties
 
@@ -357,52 +274,6 @@ w 100
 h 20
 controlPv "$(SIG):Hist:$(DUR):AVG"
 font "helvetica-medium-i-12.0"
-fontAlign "center"
-fgColor index 14
-fgAlarm
-bgColor index 5
-useDisplayBg
-limitsFromDb
-nullColor index 0
-smartRefresh
-useHexPrefix
-newPos
-objType "monitors"
-noExecuteClipMask
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 0
-y 120
-w 100
-h 20
-font "helvetica-medium-r-12.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "RMS"
-}
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 0
-y 140
-w 100
-h 20
-controlPv "$(SIG):Hist:$(DUR):RMS"
-font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 14
 fgAlarm
@@ -599,5 +470,134 @@ useHexPrefix
 newPos
 objType "monitors"
 noExecuteClipMask
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 0
+w 108
+h 36
+fgColor index 14
+onColor index 6
+offColor index 5
+topShadowColor index 1
+botShadowColor index 14
+controlPv "LOC\\$(SIG):View=0"
+pressValue "-1"
+onLabel "Menu"
+offLabel "Menu"
+3d
+invisible
+font "helvetica-medium-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 0
+w 100
+h 40
+font "helvetica-bold-r-18.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 5
+useDisplayBg
+value {
+  "$(DUR)"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 0
+y 120
+w 112
+h 40
+fgColor index 14
+bgColor index 6
+topShadowColor index 1
+botShadowColor index 14
+font "helvetica-medium-r-14.0"
+invisible
+buttonLabel "Limits"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "historyScreens/aiLimits.edl"
+}
+menuLabel {
+  0 "Limits"
+}
+setPosition {
+  0 "button"
+}
+symbols {
+  0 "PV=$(SIG):Hist:$(DUR):RMS"
+}
+replaceSymbols {
+  0 1
+}
+propagateMacros {
+  0 0
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 0
+y 140
+w 100
+h 20
+controlPv "$(SIG):Hist:$(DUR):RMS"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 120
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "RMS"
+}
 endObjectProperties
 

@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 423
-y 40
-w 1280
-h 640
+x 4
+y 56
+w 1272
+h 648
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-bold-r-12.0"
 ctlFontAlign "center"
@@ -34,8 +34,8 @@ minor 1
 release 0
 x 0
 y 0
-w 116
-h 76
+w 104
+h 64
 fgColor index 14
 onColor index 70
 offColor index 46
@@ -57,9 +57,9 @@ major 4
 minor 7
 release 0
 # Geometry
-x 4
+x 0
 y 68
-w 1276
+w 1260
 h 568
 # Appearance
 border
@@ -103,10 +103,6 @@ yPv {
   2 "$(SIG3):Hist:$(DUR)"
   3 "$(SIG4):Hist:$(DUR)"
 }
-lineThickness {
-  0 1
-  1 1
-}
 plotUpdateMode {
   0 "y"
   1 "y"
@@ -132,12 +128,14 @@ y 0
 w 96
 h 68
 font "helvetica-bold-r-18.0"
+fontAlign "center"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "$(DUR)"
 }
+border
 endObjectProperties
 
 # (Circle)

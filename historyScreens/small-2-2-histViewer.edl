@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 4
-y 190
-w 1272
-h 688
+x 1896
+y 126
+w 568
+h 320
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-bold-r-12.0"
 ctlFontAlign "center"
@@ -34,26 +34,26 @@ major 4
 minor 1
 release 0
 x 0
-y 32
-w 1264
-h 640
+y 24
+w 564
+h 294
 fgColor index 14
 bgColor index 0
 topShadowColor index 0
 botShadowColor index 14
 displaySource "menu"
-filePv "LOC\\$(SIG1):4-histView=0"
+filePv "LOC\\$(SIG1):small-2-2-histView=0"
 numDsps 9
 displayFileName {
-  0 "historyScreens/emb-4-hist-viewer.edl"
-  1 "historyScreens/emb-4-hist-viewer.edl"
-  2 "historyScreens/emb-4-hist-viewer.edl"
-  3 "historyScreens/emb-4-hist-viewer.edl"
-  4 "historyScreens/emb-4-hist-viewer.edl"
-  5 "historyScreens/emb-4-hist-viewer.edl"
-  6 "historyScreens/emb-4-hist-viewer.edl"
-  7 "historyScreens/emb-4-hist-viewer.edl"
-  8 "historyScreens/emb-4-hist-viewer.edl"
+  0 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  1 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  2 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  3 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  4 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  5 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  6 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  7 "historyScreens/emb-small-2-2-hist-viewer.edl"
+  8 "historyScreens/emb-small-2-2-hist-viewer.edl"
 }
 menuLabel {
   0 "LAST_N"
@@ -111,7 +111,7 @@ release 0
 x 0
 y 0
 w 340
-h 28
+h 20
 font "helvetica-medium-r-14.0"
 fontAlign "center"
 fgColor index 14
@@ -128,7 +128,7 @@ major 4
 minor 3
 release 0
 x 1148
-y 4
+y 8
 w 92
 h 24
 fgColor index 14
@@ -148,5 +148,35 @@ menuLabel {
 replaceSymbols {
   0 1
 }
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 484
+y 4
+w 80
+h 20
+fgColor index 14
+bgColor index 3
+topShadowColor index 2
+botShadowColor index 13
+font "helvetica-medium-r-12.0"
+buttonLabel "Larger"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "historyScreens/2-2-histViewer.edl"
+}
+menuLabel {
+  0 "Larger"
+}
+setPosition {
+  0 "button"
+}
+icon
 endObjectProperties
 

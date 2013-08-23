@@ -4,7 +4,7 @@ major 4
 minor 0
 release 1
 x 1284
-y 49
+y 166
 w 1256
 h 854
 font "helvetica-medium-r-12.0"
@@ -34,9 +34,9 @@ major 4
 minor 1
 release 0
 x 0
-y 44
-w 1240
-h 800
+y 32
+w 1244
+h 812
 fgColor index 14
 bgColor index 0
 topShadowColor index 0
@@ -111,12 +111,11 @@ release 0
 x 8
 y 0
 w 340
-h 20
+h 28
 font "helvetica-medium-r-14.0"
 fontAlign "center"
 fgColor index 14
-bgColor index 5
-useDisplayBg
+bgColor index 55
 value {
   "$(TITLE)"
 }
@@ -129,7 +128,7 @@ major 4
 minor 3
 release 0
 x 1148
-y 8
+y 4
 w 92
 h 24
 fgColor index 14
@@ -145,9 +144,6 @@ displayFileName {
 }
 menuLabel {
   0 "Home"
-}
-replaceSymbols {
-  0 1
 }
 endObjectProperties
 

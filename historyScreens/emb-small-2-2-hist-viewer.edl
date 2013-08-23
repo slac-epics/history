@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 106
-y 99
-w 1272
-h 640
+x 1328
+y 171
+w 560
+h 290
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-bold-r-12.0"
 ctlFontAlign "center"
@@ -21,6 +21,7 @@ ctlBgColor1 index 0
 ctlBgColor2 index 14
 topShadowColor index 0
 botShadowColor index 14
+title "emb-small-2-2-histViewer.edl"
 showGrid
 snapToGrid
 gridSize 4
@@ -34,14 +35,14 @@ minor 1
 release 0
 x 0
 y 0
-w 104
-h 60
+w 84
+h 36
 fgColor index 14
 onColor index 70
 offColor index 46
 topShadowColor index 68
 botShadowColor index 47
-controlPv "LOC\\$(SIG1):2-histView=0"
+controlPv "LOC\\$(SIG1):small-2-2-histView=0"
 pressValue "-1"
 onLabel "Menu"
 offLabel "Menu"
@@ -58,9 +59,9 @@ minor 7
 release 0
 # Geometry
 x 0
-y 68
-w 1260
-h 568
+y 48
+w 556
+h 120
 # Appearance
 border
 plotAreaBorder
@@ -82,16 +83,15 @@ xMin 0
 xMax 299
 xLabelIntervals 2
 xMajorsPerLabel 2
-xMinorsPerMajor 2
 xShowLabelGrid
 # Y axis properties
 showYAxis
 yAxisSrc "AutoScale"
 yMax 1
-yLabelIntervals 2
+yLabelIntervals 4
 yMajorsPerLabel 2
-yMinorsPerMajor 2
 yShowLabelGrid
+yUserSpecScaleDiv 1
 # Y2 axis properties
 y2AxisSrc "AutoScale"
 y2Max 1
@@ -119,8 +119,8 @@ minor 1
 release 0
 x 0
 y 0
-w 96
-h 68
+w 80
+h 44
 font "helvetica-bold-r-18.0"
 fontAlign "center"
 fgColor index 14
@@ -138,8 +138,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 128
-y 8
+x 92
+y 0
 w 20
 h 20
 lineColor index 26
@@ -154,9 +154,9 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 160
-y 8
-w 288
+x 116
+y 0
+w 204
 h 20
 font "helvetica-medium-r-12.0"
 fgColor index 14
@@ -173,8 +173,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 128
-y 36
+x 92
+y 24
 w 20
 h 20
 lineColor index 16
@@ -189,9 +189,9 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 160
-y 36
-w 288
+x 116
+y 24
+w 204
 h 20
 font "helvetica-medium-r-12.0"
 fgColor index 14
@@ -199,6 +199,138 @@ bgColor index 0
 useDisplayBg
 value {
   "$(SIG2)"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 352
+y 0
+w 204
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(SIG3)"
+}
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 328
+y 0
+w 20
+h 20
+lineColor index 21
+fill
+fillColor index 21
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 352
+y 24
+w 204
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(SIG4)"
+}
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 328
+y 24
+w 20
+h 20
+lineColor index 30
+fill
+fillColor index 30
+lineWidth 0
+endObjectProperties
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+# Geometry
+x 0
+y 168
+w 556
+h 120
+# Appearance
+border
+plotAreaBorder
+autoScaleBothDirections
+autoScaleUpdateMs 7000
+autoScaleThreshPct 80
+fgColor index 14
+bgColor index 10
+gridColor index 5
+font "helvetica-bold-r-12.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 300
+updateTimerMs 1000
+# X axis properties
+showXAxis
+xAxisSrc "fromUser"
+xMin 0
+xMax 299
+xLabelIntervals 2
+xMajorsPerLabel 2
+xMinorsPerMajor 2
+xShowLabelGrid
+# Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+yMax 1
+yLabelIntervals 4
+yMajorsPerLabel 2
+yMinorsPerMajor 2
+yShowLabelGrid
+yUserSpecScaleDiv 1
+# Y2 axis properties
+y2AxisSrc "AutoScale"
+y2Max 1
+# Trace Properties
+numTraces 2
+yPv {
+  0 "$(SIG3):Hist:$(DUR)"
+  1 "$(SIG4):Hist:$(DUR)"
+}
+plotUpdateMode {
+  0 "y"
+  1 "y"
+}
+plotColor {
+  0 index 21
+  1 index 30
 }
 endObjectProperties
 
