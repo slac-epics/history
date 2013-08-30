@@ -8,7 +8,7 @@
 #		NAME		- Name of this time period
 #		DESC		- Description of Time Period, default "$(NAME) Hist"
 #		OUT			- Name of waveform PV where history is written
-#						Defaults to $(PV):Hist:$(NAME)
+#						Defaults to $(PV)_$(NAME)
 #		N_SAMPLES	- Number of samples to keep, Output waveform's NELEM
 #						Defaults to 300
 #
@@ -25,7 +25,7 @@
 #		A	- Array of double's containing samples of A
 #				taken over the last T seconds.
 #
-record( aSub, "$(OUT=$(PV):Hist:$(NAME)):Sub" )
+record( aSub, "$(OUT=$(PV)_$(NAME))_SUB" )
 {
 	field( DESC, "Keeps History of PV" )
 	field( SCAN, ".1 second" )
@@ -43,11 +43,11 @@ record( aSub, "$(OUT=$(PV):Hist:$(NAME)):Sub" )
 
 	field( FTVA, "DOUBLE" )
 	field( NOVA, $(N_SAMPLES=300) )
-	field( OUTA, "$(OUT=$(PV):Hist:$(NAME)) PP" )
+	field( OUTA, "$(OUT=$(PV)_$(NAME)) PP" )
 
 }
 
-record( waveform, "$(OUT=$(PV):Hist:$(NAME))")
+record( waveform, "$(OUT=$(PV)_$(NAME))")
 {
     field( DESC, "$(DESC=$(NAME) Hist)" )
 	field( FTVL, "DOUBLE" )

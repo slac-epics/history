@@ -4,7 +4,7 @@ major 4
 minor 0
 release 1
 x 1284
-y 166
+y 87
 w 1256
 h 854
 font "helvetica-medium-r-12.0"
@@ -25,6 +25,7 @@ title "$(TITLE)"
 showGrid
 snapToGrid
 gridSize 4
+disableScroll
 endScreenProperties
 
 # (Embedded Window)
@@ -42,7 +43,7 @@ bgColor index 0
 topShadowColor index 0
 botShadowColor index 14
 displaySource "menu"
-filePv "LOC\\$(SIG1):2-2-histView=0"
+filePv "LOC\\$(SIG1)_2-2-histView=0"
 numDsps 9
 displayFileName {
   0 "historyScreens/emb-2-2-hist-viewer.edl"
@@ -145,5 +146,42 @@ displayFileName {
 menuLabel {
   0 "Home"
 }
+icon
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 1064
+y 4
+w 80
+h 24
+fgColor index 14
+bgColor index 3
+topShadowColor index 2
+botShadowColor index 13
+font "helvetica-medium-r-12.0"
+buttonLabel "Smaller"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "historyScreens/small-2-2-histViewer.edl"
+}
+menuLabel {
+  0 "Smaller"
+}
+closeAction {
+  0 1
+}
+setPosition {
+  0 "button"
+}
+closeDisplay {
+  0 1
+}
+icon
 endObjectProperties
 

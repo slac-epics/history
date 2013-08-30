@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 4
-y 56
+x 1363
+y 93
 w 1272
 h 648
 font "helvetica-medium-r-12.0"
@@ -41,7 +41,7 @@ onColor index 70
 offColor index 46
 topShadowColor index 68
 botShadowColor index 47
-controlPv "LOC\\$(SIG1):4-histView=0"
+controlPv "LOC\\$(SIG1)_4-histView=0"
 pressValue "-1"
 onLabel "Menu"
 offLabel "Menu"
@@ -59,7 +59,7 @@ release 0
 # Geometry
 x 0
 y 68
-w 1260
+w 1256
 h 568
 # Appearance
 border
@@ -98,10 +98,10 @@ y2Max 1
 # Trace Properties
 numTraces 4
 yPv {
-  0 "$(SIG1):Hist:$(DUR)"
-  1 "$(SIG2):Hist:$(DUR)"
-  2 "$(SIG3):Hist:$(DUR)"
-  3 "$(SIG4):Hist:$(DUR)"
+  0 "$(SIG1)_$(DUR)"
+  1 "$(SIG2)_$(DUR)"
+  2 "$(SIG3)_$(DUR)"
+  3 "$(SIG4)_$(DUR)"
 }
 plotUpdateMode {
   0 "y"

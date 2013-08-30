@@ -2,7 +2,7 @@
 # wave_proc_hist.substitutions
 # This substitutions file sets the pattern for
 # processing a waveform to create the MAX, MIN,
-# RMS, and StdDev for each.
+# RMS, and STD for each.
 # In addition, for each processed ai value,
 # it generates history waveforms to keep
 # recent history of each ai value for a variety
@@ -25,73 +25,73 @@ file pv_history.template
 	pattern
 	{	NAME,		PERIOD,		PV					}
 
-	{	"LAST_N",	0,			"$(WAVE):AVG"		}
-	{	"1MIN",		60,			"$(WAVE):AVG"		}
-	{	"6MIN",		360,		"$(WAVE):AVG"		}
-	{	"30MIN",	1800,		"$(WAVE):AVG"		}
-	{	"1HR",		3600,		"$(WAVE):AVG"		}
-	{	"6HR",		21600,		"$(WAVE):AVG"		}
-	{	"24HR",		86400,		"$(WAVE):AVG"		}
-	{	"3DAY",		259200,		"$(WAVE):AVG"		}
-	{	"WEEK",		604800,		"$(WAVE):AVG"		}
+	{	"LAST_N",	0,			"$(WAVE)_AVG"		}
+	{	"1MIN",		60,			"$(WAVE)_AVG"		}
+	{	"6MIN",		360,		"$(WAVE)_AVG"		}
+	{	"30MIN",	1800,		"$(WAVE)_AVG"		}
+	{	"1HR",		3600,		"$(WAVE)_AVG"		}
+	{	"6HR",		21600,		"$(WAVE)_AVG"		}
+	{	"24HR",		86400,		"$(WAVE)_AVG"		}
+	{	"3DAY",		259200,		"$(WAVE)_AVG"		}
+	{	"WEEK",		604800,		"$(WAVE)_AVG"		}
 
-	{	"LAST_N",	0,			"$(WAVE):MAX"		}
-	{	"1MIN",		60,			"$(WAVE):MAX"		}
-	{	"6MIN",		360,		"$(WAVE):MAX"		}
-	{	"30MIN",	1800,		"$(WAVE):MAX"		}
-	{	"1HR",		3600,		"$(WAVE):MAX"		}
-	{	"6HR",		21600,		"$(WAVE):MAX"		}
-	{	"24HR",		86400,		"$(WAVE):MAX"		}
-	{	"3DAY",		259200,		"$(WAVE):MAX"		}
-	{	"WEEK",		604800,		"$(WAVE):MAX"		}
+	{	"LAST_N",	0,			"$(WAVE)_MAX"		}
+	{	"1MIN",		60,			"$(WAVE)_MAX"		}
+	{	"6MIN",		360,		"$(WAVE)_MAX"		}
+	{	"30MIN",	1800,		"$(WAVE)_MAX"		}
+	{	"1HR",		3600,		"$(WAVE)_MAX"		}
+	{	"6HR",		21600,		"$(WAVE)_MAX"		}
+	{	"24HR",		86400,		"$(WAVE)_MAX"		}
+	{	"3DAY",		259200,		"$(WAVE)_MAX"		}
+	{	"WEEK",		604800,		"$(WAVE)_MAX"		}
 
-	{	"LAST_N",	0,			"$(WAVE):MIN"		}
-	{	"1MIN",		60,			"$(WAVE):MIN"		}
-	{	"6MIN",		360,		"$(WAVE):MIN"		}
-	{	"30MIN",	1800,		"$(WAVE):MIN"		}
-	{	"1HR",		3600,		"$(WAVE):MIN"		}
-	{	"6HR",		21600,		"$(WAVE):MIN"		}
-	{	"24HR",		86400,		"$(WAVE):MIN"		}
-	{	"3DAY",		259200,		"$(WAVE):MIN"		}
-	{	"WEEK",		604800,		"$(WAVE):MIN"		}
+	{	"LAST_N",	0,			"$(WAVE)_MIN"		}
+	{	"1MIN",		60,			"$(WAVE)_MIN"		}
+	{	"6MIN",		360,		"$(WAVE)_MIN"		}
+	{	"30MIN",	1800,		"$(WAVE)_MIN"		}
+	{	"1HR",		3600,		"$(WAVE)_MIN"		}
+	{	"6HR",		21600,		"$(WAVE)_MIN"		}
+	{	"24HR",		86400,		"$(WAVE)_MIN"		}
+	{	"3DAY",		259200,		"$(WAVE)_MIN"		}
+	{	"WEEK",		604800,		"$(WAVE)_MIN"		}
 
-	{	"LAST_N",	0,			"$(WAVE):RMS"		}
-	{	"1MIN",		60,			"$(WAVE):RMS"		}
-	{	"6MIN",		360,		"$(WAVE):RMS"		}
-	{	"30MIN",	1800,		"$(WAVE):RMS"		}
-	{	"1HR",		3600,		"$(WAVE):RMS"		}
-	{	"6HR",		21600,		"$(WAVE):RMS"		}
-	{	"24HR",		86400,		"$(WAVE):RMS"		}
-	{	"3DAY",		259200,		"$(WAVE):RMS"		}
-	{	"WEEK",		604800,		"$(WAVE):RMS"		}
+	{	"LAST_N",	0,			"$(WAVE)_RMS"		}
+	{	"1MIN",		60,			"$(WAVE)_RMS"		}
+	{	"6MIN",		360,		"$(WAVE)_RMS"		}
+	{	"30MIN",	1800,		"$(WAVE)_RMS"		}
+	{	"1HR",		3600,		"$(WAVE)_RMS"		}
+	{	"6HR",		21600,		"$(WAVE)_RMS"		}
+	{	"24HR",		86400,		"$(WAVE)_RMS"		}
+	{	"3DAY",		259200,		"$(WAVE)_RMS"		}
+	{	"WEEK",		604800,		"$(WAVE)_RMS"		}
 
-	{	"LAST_N",	0,			"$(WAVE):StdDev"	}
-	{	"1MIN",		60,			"$(WAVE):StdDev"	}
-	{	"6MIN",		360,		"$(WAVE):StdDev"	}
-	{	"30MIN",	1800,		"$(WAVE):StdDev"	}
-	{	"1HR",		3600,		"$(WAVE):StdDev"	}
-	{	"6HR",		21600,		"$(WAVE):StdDev"	}
-	{	"24HR",		86400,		"$(WAVE):StdDev"	}
-	{	"3DAY",		259200,		"$(WAVE):StdDev"	}
-	{	"WEEK",		604800,		"$(WAVE):StdDev"	}
+	{	"LAST_N",	0,			"$(WAVE)_STD"	}
+	{	"1MIN",		60,			"$(WAVE)_STD"	}
+	{	"6MIN",		360,		"$(WAVE)_STD"	}
+	{	"30MIN",	1800,		"$(WAVE)_STD"	}
+	{	"1HR",		3600,		"$(WAVE)_STD"	}
+	{	"6HR",		21600,		"$(WAVE)_STD"	}
+	{	"24HR",		86400,		"$(WAVE)_STD"	}
+	{	"3DAY",		259200,		"$(WAVE)_STD"	}
+	{	"WEEK",		604800,		"$(WAVE)_STD"	}
 
-	{	"LAST_N",	0,			"$(WAVE):Slope"		}
-	{	"1MIN",		60,			"$(WAVE):Slope"		}
-	{	"6MIN",		360,		"$(WAVE):Slope"		}
-	{	"30MIN",	1800,		"$(WAVE):Slope"		}
-	{	"1HR",		3600,		"$(WAVE):Slope"		}
-	{	"6HR",		21600,		"$(WAVE):Slope"		}
-	{	"24HR",		86400,		"$(WAVE):Slope"		}
-	{	"3DAY",		259200,		"$(WAVE):Slope"		}
-	{	"WEEK",		604800,		"$(WAVE):Slope"		}
+	{	"LAST_N",	0,			"$(WAVE)_SLOPE"		}
+	{	"1MIN",		60,			"$(WAVE)_SLOPE"		}
+	{	"6MIN",		360,		"$(WAVE)_SLOPE"		}
+	{	"30MIN",	1800,		"$(WAVE)_SLOPE"		}
+	{	"1HR",		3600,		"$(WAVE)_SLOPE"		}
+	{	"6HR",		21600,		"$(WAVE)_SLOPE"		}
+	{	"24HR",		86400,		"$(WAVE)_SLOPE"		}
+	{	"3DAY",		259200,		"$(WAVE)_SLOPE"		}
+	{	"WEEK",		604800,		"$(WAVE)_SLOPE"		}
 
-	{	"LAST_N",	0,			"$(WAVE):Offset"	}
-	{	"1MIN",		60,			"$(WAVE):Offset"	}
-	{	"6MIN",		360,		"$(WAVE):Offset"	}
-	{	"30MIN",	1800,		"$(WAVE):Offset"	}
-	{	"1HR",		3600,		"$(WAVE):Offset"	}
-	{	"6HR",		21600,		"$(WAVE):Offset"	}
-	{	"24HR",		86400,		"$(WAVE):Offset"	}
-	{	"3DAY",		259200,		"$(WAVE):Offset"	}
-	{	"WEEK",		604800,		"$(WAVE):Offset"	}
+	{	"LAST_N",	0,			"$(WAVE)_OFFSET"	}
+	{	"1MIN",		60,			"$(WAVE)_OFFSET"	}
+	{	"6MIN",		360,		"$(WAVE)_OFFSET"	}
+	{	"30MIN",	1800,		"$(WAVE)_OFFSET"	}
+	{	"1HR",		3600,		"$(WAVE)_OFFSET"	}
+	{	"6HR",		21600,		"$(WAVE)_OFFSET"	}
+	{	"24HR",		86400,		"$(WAVE)_OFFSET"	}
+	{	"3DAY",		259200,		"$(WAVE)_OFFSET"	}
+	{	"WEEK",		604800,		"$(WAVE)_OFFSET"	}
 }

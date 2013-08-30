@@ -42,7 +42,7 @@ onColor index 70
 offColor index 46
 topShadowColor index 68
 botShadowColor index 47
-controlPv "LOC\\$(SIG1):small-2-2-histView=0"
+controlPv "LOC\\$(SIG1)_small-2-2-histView=0"
 pressValue "-1"
 onLabel "Menu"
 offLabel "Menu"
@@ -98,8 +98,8 @@ y2Max 1
 # Trace Properties
 numTraces 2
 yPv {
-  0 "$(SIG1):Hist:$(DUR)"
-  1 "$(SIG2):Hist:$(DUR)"
+  0 "$(SIG1)_$(DUR)"
+  1 "$(SIG2)_$(DUR)"
 }
 plotUpdateMode {
   0 "y"
@@ -321,8 +321,8 @@ y2Max 1
 # Trace Properties
 numTraces 2
 yPv {
-  0 "$(SIG3):Hist:$(DUR)"
-  1 "$(SIG4):Hist:$(DUR)"
+  0 "$(SIG3)_$(DUR)"
+  1 "$(SIG4)_$(DUR)"
 }
 plotUpdateMode {
   0 "y"

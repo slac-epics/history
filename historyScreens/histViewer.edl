@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1892
-y 253
-w 596
-h 370
+x 1896
+y 277
+w 600
+h 374
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-bold-r-12.0"
 ctlFontAlign "center"
@@ -25,6 +25,7 @@ title "$(SIG) History Viewer"
 showGrid
 snapToGrid
 gridSize 4
+disableScroll
 endScreenProperties
 
 # (Related Display)
@@ -65,14 +66,14 @@ minor 1
 release 0
 x 0
 y 44
-w 576
+w 592
 h 324
 fgColor index 14
 bgColor index 0
 topShadowColor index 0
 botShadowColor index 14
 displaySource "menu"
-filePv "LOC\\$(SIG):View=0"
+filePv "LOC\\$(SIG)_View=0"
 numDsps 9
 displayFileName {
   0 "historyScreens/emb-hist-viewer.edl"
@@ -217,32 +218,5 @@ showUnits
 newPos
 objType "monitors"
 noExecuteClipMask
-endObjectProperties
-
-# (Lines)
-object activeLineClass
-beginObjectProperties
-major 4
-minor 0
-release 1
-x 576
-y 44
-w 16
-h 320
-lineColor index 14
-fillColor index 0
-numPoints 4
-xPoints {
-  0 576
-  1 592
-  2 592
-  3 576
-}
-yPoints {
-  0 44
-  1 44
-  2 364
-  3 364
-}
 endObjectProperties
 

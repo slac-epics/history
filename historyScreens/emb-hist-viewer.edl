@@ -186,7 +186,7 @@ y2Max 1
 # Trace Properties
 numTraces 1
 yPv {
-  0 "$(SIG):Hist:$(DUR)"
+  0 "$(SIG)_$(DUR)"
 }
 plotUpdateMode {
   0 "y"
@@ -226,7 +226,7 @@ x 0
 y 60
 w 100
 h 20
-controlPv "$(SIG):Hist:$(DUR):MAX"
+controlPv "$(SIG)_$(DUR)_MAX"
 font "helvetica-medium-i-12.0"
 fontAlign "center"
 fgColor index 14
@@ -272,7 +272,7 @@ x 0
 y 100
 w 100
 h 20
-controlPv "$(SIG):Hist:$(DUR):AVG"
+controlPv "$(SIG)_$(DUR)_AVG"
 font "helvetica-medium-i-12.0"
 fontAlign "center"
 fgColor index 14
@@ -304,7 +304,7 @@ fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
-  "StdDev"
+  "STD"
 }
 endObjectProperties
 
@@ -318,7 +318,7 @@ x 0
 y 180
 w 100
 h 20
-controlPv "$(SIG):Hist:$(DUR):StdDev"
+controlPv "$(SIG)_$(DUR)_STD"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 14
@@ -364,7 +364,7 @@ x 0
 y 220
 w 100
 h 20
-controlPv "$(SIG):Hist:$(DUR):MIN"
+controlPv "$(SIG)_$(DUR)_MIN"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 14
@@ -410,7 +410,7 @@ x 0
 y 260
 w 100
 h 20
-controlPv "$(SIG):Hist:$(DUR):Slope"
+controlPv "$(SIG)_$(DUR)_SLOPE"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 14
@@ -456,7 +456,7 @@ x 0
 y 300
 w 100
 h 20
-controlPv "$(SIG):Hist:$(DUR):Offset"
+controlPv "$(SIG)_$(DUR)_OFFSET"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 14
@@ -487,7 +487,7 @@ onColor index 6
 offColor index 5
 topShadowColor index 1
 botShadowColor index 14
-controlPv "LOC\\$(SIG):View=0"
+controlPv "LOC\\$(SIG)_View=0"
 pressValue "-1"
 onLabel "Menu"
 offLabel "Menu"
@@ -545,7 +545,7 @@ setPosition {
   0 "button"
 }
 symbols {
-  0 "PV=$(SIG):Hist:$(DUR):RMS"
+  0 "PV=$(SIG)_$(DUR)_RMS"
 }
 replaceSymbols {
   0 1
@@ -565,7 +565,7 @@ x 0
 y 140
 w 100
 h 20
-controlPv "$(SIG):Hist:$(DUR):RMS"
+controlPv "$(SIG)_$(DUR)_RMS"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 14

@@ -4,7 +4,7 @@
 # and write the results as new waveforms and scalar PV's
 #
 # Required Macro Definitions
-# WAVE			- Waveform name, for example AMO:KB1:WAV:01
+# WAVE			- Waveform name, for example AMO_KB1_WAV_01
 # EGU			- Engineering units: fs, C, mm, etc.
 #
 # Optional macros
@@ -22,10 +22,10 @@
 # OUTB:	MIN    - ai PV - Min of all samples
 # OUTC:	MAX    - ai PV - Max of all samples
 # OUTD:	AVG    - ai PV - Average sample value
-# OUTE: StdDev - ai PV - Std deviation 
-# OUTF: Slope  - ai PV - Slope of linear least squares fit
-# OUTG: Offset - ai PV - Offset of linear least squares fit
-record( aSub, "$(WAVE):RMS:Sub" )
+# OUTE: STD    - ai PV - Std deviation 
+# OUTF: SLOPE  - ai PV - Slope of linear least squares fit
+# OUTG: OFFSET - ai PV - Offset of linear least squares fit
+record( aSub, "$(WAVE)_RMS_SUB" )
 {
 	field( DESC, "Calculate RMS for array" )
 	field( SCAN, "Passive" )
@@ -39,55 +39,55 @@ record( aSub, "$(WAVE):RMS:Sub" )
 
 	field( FTVA, "DOUBLE" )
 	field( NOVA, 1 )
-	field( OUTA, "$(WAVE):RMS PP" )
+	field( OUTA, "$(WAVE)_RMS PP" )
 
 	field( FTVB, "DOUBLE" )
 	field( NOVB, 1 )
-	field( OUTB, "$(WAVE):MAX PP" )
+	field( OUTB, "$(WAVE)_MAX PP" )
 
 	field( FTVC, "DOUBLE" )
 	field( NOVC, 1 )
-	field( OUTC, "$(WAVE):MIN PP" )
+	field( OUTC, "$(WAVE)_MIN PP" )
 
 	field( FTVD, "DOUBLE" )
 	field( NOVD, 1 )
-	field( OUTD, "$(WAVE):AVG PP" )
+	field( OUTD, "$(WAVE)_AVG PP" )
 
 	field( FTVE, "DOUBLE" )
 	field( NOVE, 1 )
-	field( OUTE, "$(WAVE):StdDev PP" )
+	field( OUTE, "$(WAVE)_STD PP" )
 
 	field( FTVF, "DOUBLE" )
 	field( NOVF, 1 )
-	field( OUTF, "$(WAVE):Slope PP" )
+	field( OUTF, "$(WAVE)_SLOPE PP" )
 
 	field( FTVG, "DOUBLE" )
 	field( NOVG, 1 )
-	field( OUTG, "$(WAVE):Offset PP" )
+	field( OUTG, "$(WAVE)_OFFSET PP" )
 }
 
-record( ai, "$(WAVE):MAX" )
+record( ai, "$(WAVE)_MAX" )
 {
 	field( DESC, "MAX for waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
 }
 
-record( ai, "$(WAVE):AVG" )
+record( ai, "$(WAVE)_AVG" )
 {
 	field( DESC, "AVG of waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
 }
 
-record( ai, "$(WAVE):MIN" )
+record( ai, "$(WAVE)_MIN" )
 {
 	field( DESC, "MIN for waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
 }
 
-record( ai, "$(WAVE):RMS" )
+record( ai, "$(WAVE)_RMS" )
 {
 	field( DESC, "RMS for waveform" )
 	field( LOLO, "$(RMS_LOLO=0)" )
@@ -100,21 +100,21 @@ record( ai, "$(WAVE):RMS" )
 	field( LSV,   "MINOR" )
 }
 
-record( ai, "$(WAVE):StdDev" )
+record( ai, "$(WAVE)_STD" )
 {
 	field( DESC, "StdDev for waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
 }
 
-record( ai, "$(WAVE):Slope" )
+record( ai, "$(WAVE)_SLOPE" )
 {
 	field( DESC, "Best fit linear slope" )
 	field( EGU,  "$(EGU)/s" )
 	field( PREC, "4" )
 }
 
-record( ai, "$(WAVE):Offset" )
+record( ai, "$(WAVE)_OFFSET" )
 {
 	field( DESC, "Offset of least squares fit" )
 	field( EGU,  "$(EGU)" )

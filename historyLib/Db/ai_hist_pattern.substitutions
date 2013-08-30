@@ -3,7 +3,7 @@
 # This sample substitutions file sets the pattern for keeping
 # history waveforms for the specified analog input PV,
 # along with wave processing to create the MAX, MIN,
-# RMS, and StdDev for each.
+# RMS, and STD for each.
 #
 # Macro names
 #	PV		- PV name for the ai record to capture
@@ -12,8 +12,8 @@
 
 # Create history PV's
 # This substitution creates two PV's per instance
-#   $(PV):Hist:$(NAME):Sub	- aSub record to do processing
-#	$(PV):Hist:$(NAME)		- waveform record for the history data
+#   $(PV)_$(NAME)_SUB	- aSub record to do processing
+#	$(PV)_$(NAME)		- waveform record for the history data
 #
 # Customize as desired with different time periods, however
 # custom time period's will require custom screens as well.
@@ -35,27 +35,35 @@ file pv_history.template
 
 # Create waveform processing records
 # This substitution creates two PV's per instance
-#   $(WAVE):RMS:Sub	- aSub record to do processing
-#	$(WAVE):AVG		- ai record for waveform avg value
-#	$(WAVE):MAX		- ai record for waveform max value
-#	$(WAVE):MIN		- ai record for waveform min value
-#	$(WAVE):StdDev	- ai record for waveform std deviation
-#	$(WAVE):Slope	- ai record for waveform least squares slope
-#	$(WAVE):Offset	- ai record for waveform least squares offset
+#   $(WAVE)_RMS_SUB	- aSub record to do processing
+#	$(WAVE)_AVG		- ai record for waveform avg value
+#	$(WAVE)_MAX		- ai record for waveform max value
+#	$(WAVE)_MIN		- ai record for waveform min value
+#	$(WAVE)_STD		- ai record for waveform std deviation
+#	$(WAVE)_SLOPE	- ai record for waveform least squares slope
+#	$(WAVE)_OFFSET	- ai record for waveform least squares offset
 #
 # Generally you'll want one instance here for each
 # period you include above
 file wave_proc.template
 {
 	pattern
-	{	WAVE				}
-	{	$(PV):Hist:LAST_N	}
-	{	$(PV):Hist:1MIN		}
-	{	$(PV):Hist:6MIN		}
-	{	$(PV):Hist:30MIN	}
-	{	$(PV):Hist:1HR		}
-	{	$(PV):Hist:6HR		}
-	{	$(PV):Hist:24HR		}
-	{	$(PV):Hist:3DAY		}
-	{	$(PV):Hist:WEEK		}
+	{	WAVE			}
+	{	$(PV)_LAST_N	}
+	{	$(PV)_1MIN		}
+	{	$(PV)_6MIN		}
+	{	$(PV)_30MIN		}
+	{	$(PV)_1HR		}
+	{	$(PV)_6HR		}
+	{	$(PV)_24HR		}
+	{	$(PV)_3DAY		}
+	{	$(PV)_WEEK		}
 }
+
+# This template provides aliases for easy access to the LAST_N stats
+# Ex:  alias( "$(PV)_LAST_N_MAX", "$(PV)_MAX" )
+file stats_aliases.template
+{
+	{	PV	= "$(PV)"	}
+}
+

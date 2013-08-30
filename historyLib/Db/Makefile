@@ -17,6 +17,7 @@ DB += ai_hist_pattern.db
 DB += ai_hist_pattern.substitutions
 DB += wave_proc_hist.db
 DB += wave_proc_hist.substitutions
+DB += stats_aliases.template
 
 #----------------------------------------------------
 # Create and install (or just install)

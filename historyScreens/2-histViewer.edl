@@ -4,8 +4,8 @@ major 4
 minor 0
 release 1
 x 1284
-y 326
-w 1272
+y 260
+w 1268
 h 694
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-bold-r-12.0"
@@ -25,6 +25,7 @@ title "$(TITLE)"
 showGrid
 snapToGrid
 gridSize 4
+disableScroll
 endScreenProperties
 
 # (Embedded Window)
@@ -42,7 +43,7 @@ bgColor index 0
 topShadowColor index 0
 botShadowColor index 14
 displaySource "menu"
-filePv "LOC\\$(SIG1):2-histView=0"
+filePv "LOC\\$(SIG1)_2-histView=0"
 numDsps 9
 displayFileName {
   0 "historyScreens/emb-2-hist-viewer.edl"
