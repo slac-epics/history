@@ -266,8 +266,6 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 	//	Get data
 	assert( pSub->fta == DBR_DOUBLE );
 	double			rmsVal	= 0.0;
-	double			minVal	= LONG_MAX;
-	double			maxVal	= LONG_MIN;
 	double			avgVal	= 0.0;
 	double			stdDev	= 0.0;
 	double			sumX	= 0.0;
@@ -277,6 +275,8 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 	double			sumYY	= 0.0;
 
 	double		*	pData	= static_cast<double *>( pSub->a );
+	double			minVal	= *pData;
+	double			maxVal	= *pData;
 	for ( epicsUInt32 i = 0; i < pSub->noa; ++i )
 	{
 		double		dblVal	= *pData++;
