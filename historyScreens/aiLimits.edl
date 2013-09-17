@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 64
-y 226
+x 58
+y 98
 w 417
 h 450
 font "helvetica-medium-r-12.0"
@@ -98,7 +98,7 @@ major 4
 minor 5
 release 0
 x 80
-y 308
+y 340
 w 100
 h 24
 controlPv "$(PV).LOW"
@@ -123,7 +123,7 @@ major 4
 minor 1
 release 0
 x 12
-y 308
+y 340
 w 60
 h 24
 font "helvetica-medium-r-14.0"
@@ -143,7 +143,7 @@ major 4
 minor 1
 release 0
 x 12
-y 364
+y 396
 w 60
 h 24
 font "helvetica-medium-r-14.0"
@@ -163,7 +163,7 @@ major 4
 minor 1
 release 0
 x 80
-y 280
+y 312
 w 100
 h 24
 font "helvetica-medium-r-14.0"
@@ -183,7 +183,7 @@ major 4
 minor 1
 release 0
 x 248
-y 280
+y 312
 w 100
 h 24
 font "helvetica-medium-r-14.0"
@@ -203,7 +203,7 @@ major 4
 minor 5
 release 0
 x 80
-y 364
+y 396
 w 100
 h 24
 controlPv "$(PV).LOLO"
@@ -228,7 +228,7 @@ major 4
 minor 5
 release 0
 x 248
-y 308
+y 340
 w 100
 h 24
 controlPv "$(PV).HIGH"
@@ -253,7 +253,7 @@ major 4
 minor 5
 release 0
 x 248
-y 364
+y 396
 w 100
 h 24
 controlPv "$(PV).HIHI"
@@ -278,7 +278,7 @@ major 4
 minor 5
 release 0
 x 188
-y 308
+y 340
 w 52
 h 24
 controlPv "$(PV).EGU"
@@ -301,7 +301,7 @@ major 4
 minor 5
 release 0
 x 188
-y 364
+y 396
 w 52
 h 24
 controlPv "$(PV).EGU"
@@ -324,7 +324,7 @@ major 4
 minor 5
 release 0
 x 352
-y 308
+y 340
 w 52
 h 24
 controlPv "$(PV).EGU"
@@ -347,7 +347,7 @@ major 4
 minor 5
 release 0
 x 352
-y 364
+y 396
 w 52
 h 24
 controlPv "$(PV).EGU"
@@ -370,7 +370,7 @@ major 4
 minor 0
 release 0
 x 80
-y 388
+y 420
 w 100
 h 24
 fgColor index 26
@@ -389,7 +389,7 @@ major 4
 minor 0
 release 0
 x 248
-y 388
+y 420
 w 100
 h 24
 fgColor index 26
@@ -408,7 +408,7 @@ major 4
 minor 0
 release 0
 x 248
-y 332
+y 364
 w 100
 h 24
 fgColor index 26
@@ -427,7 +427,7 @@ major 4
 minor 0
 release 0
 x 80
-y 332
+y 364
 w 100
 h 24
 fgColor index 26
@@ -465,7 +465,7 @@ major 4
 minor 5
 release 0
 x 96
-y 112
+y 116
 w 112
 h 24
 controlPv "$(PV).EGU"
@@ -490,7 +490,7 @@ major 4
 minor 1
 release 0
 x 16
-y 112
+y 116
 w 68
 h 24
 font "helvetica-medium-r-14.0"
@@ -510,7 +510,7 @@ major 4
 minor 5
 release 0
 x 96
-y 180
+y 217
 w 112
 h 24
 controlPv "$(PV).EGUF"
@@ -535,7 +535,7 @@ major 4
 minor 1
 release 0
 x 16
-y 180
+y 217
 w 68
 h 24
 font "helvetica-medium-r-14.0"
@@ -555,7 +555,7 @@ major 4
 minor 5
 release 0
 x 304
-y 180
+y 216
 w 100
 h 24
 controlPv "$(PV).EGUL"
@@ -580,7 +580,7 @@ major 4
 minor 1
 release 0
 x 220
-y 180
+y 216
 w 72
 h 24
 font "helvetica-medium-r-14.0"
@@ -600,7 +600,7 @@ major 4
 minor 0
 release 0
 x 304
-y 112
+y 116
 w 100
 h 24
 fgColor index 26
@@ -619,7 +619,7 @@ major 4
 minor 1
 release 0
 x 220
-y 112
+y 116
 w 72
 h 24
 font "helvetica-medium-r-14.0"
@@ -639,7 +639,7 @@ major 4
 minor 5
 release 0
 x 96
-y 214
+y 251
 w 112
 h 24
 controlPv "$(PV).SMOO"
@@ -664,7 +664,7 @@ major 4
 minor 1
 release 0
 x 16
-y 214
+y 251
 w 68
 h 24
 font "helvetica-medium-r-14.0"
@@ -684,7 +684,7 @@ major 4
 minor 1
 release 0
 x 16
-y 146
+y 184
 w 68
 h 24
 font "helvetica-medium-r-14.0"
@@ -704,7 +704,7 @@ major 4
 minor 5
 release 0
 x 96
-y 146
+y 184
 w 112
 h 24
 controlPv "$(PV).HOPR"
@@ -729,7 +729,7 @@ major 4
 minor 5
 release 0
 x 304
-y 146
+y 182
 w 100
 h 24
 controlPv "$(PV).LOPR"
@@ -754,7 +754,7 @@ major 4
 minor 1
 release 0
 x 220
-y 146
+y 182
 w 72
 h 24
 font "helvetica-medium-r-14.0"
@@ -774,7 +774,7 @@ major 4
 minor 1
 release 0
 x 16
-y 248
+y 284
 w 68
 h 24
 font "helvetica-medium-r-14.0"
@@ -794,7 +794,7 @@ major 4
 minor 1
 release 0
 x 220
-y 248
+y 284
 w 72
 h 24
 font "helvetica-medium-r-14.0"
@@ -814,7 +814,7 @@ major 4
 minor 5
 release 0
 x 304
-y 248
+y 284
 w 100
 h 24
 controlPv "$(PV).MDEL"
@@ -839,7 +839,7 @@ major 4
 minor 5
 release 0
 x 96
-y 248
+y 284
 w 112
 h 24
 controlPv "$(PV).ADEL"
@@ -910,7 +910,7 @@ major 4
 minor 5
 release 0
 x 304
-y 214
+y 250
 w 100
 h 24
 controlPv "$(PV).PREC"
@@ -935,7 +935,7 @@ major 4
 minor 1
 release 0
 x 220
-y 214
+y 250
 w 72
 h 24
 font "helvetica-medium-r-14.0"
@@ -946,6 +946,96 @@ useDisplayBg
 value {
   "PREC"
 }
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 96
+y 150
+w 112
+h 24
+controlPv "$(PV).DRVH"
+font "helvetica-medium-r-14.0"
+fgColor index 26
+bgColor index 5
+editable
+motifWidget
+limitsFromDb
+nullColor index 40
+smartRefresh
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 16
+y 150
+w 68
+h 24
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "DRVH"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 220
+y 148
+w 72
+h 24
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "DRVL"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 304
+y 148
+w 100
+h 24
+controlPv "$(PV).DRVL"
+font "helvetica-medium-r-14.0"
+fgColor index 26
+bgColor index 5
+editable
+motifWidget
+limitsFromDb
+nullColor index 40
+smartRefresh
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
 endObjectProperties
 
 # (Related Display)
