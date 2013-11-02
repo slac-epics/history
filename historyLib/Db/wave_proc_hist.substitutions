@@ -15,7 +15,7 @@
 file wave_proc.template
 {
 	{
-		WAVE		= $(WAVE)
+		WAVE		= '$(WAVE)'
 	}
 }
 

@@ -4,13 +4,15 @@
 #
 #	Macros:
 #		PV			- Name of PV to track
-#		PERIOD		- Time period over which to retain history
+#		PERIOD		- Time period over which to retain history, in seconds
+#		N_SAMPLES	- Number of samples to keep, Output waveform's NELEM
+#						Defaults to 300
+#		X_EGU		- Units to display on the time axis
+#		S_PER_X_EGU	- Conversion between seconds and X_EGU, e.g. 3600 for hrs
 #		NAME		- Name of this time period
 #		DESC		- Description of Time Period, default "$(NAME) Hist"
 #		OUT			- Name of waveform PV where history is written
 #						Defaults to $(PV)_$(NAME)
-#		N_SAMPLES	- Number of samples to keep, Output waveform's NELEM
-#						Defaults to 300
 #
 
 # History asub
@@ -47,11 +49,39 @@ record( aSub, "$(OUT=$(PV)_$(NAME))_SUB" )
 
 }
 
-record( waveform, "$(OUT=$(PV)_$(NAME))")
+record( waveform, "$(OUT=$(PV)_$(NAME))" )
 {
     field( DESC, "$(DESC=$(NAME) Hist)" )
 	field( FTVL, "DOUBLE" )
 	field( NELM, $(N_SAMPLES=300) )
 	field( TSEL, "$(PV).TIME" )
+	info( autosaveFields, "VAL" )
+}
+
+# Create an array of time coordinates in the specified units
+record( acalcout, "$(OUT=$(PV)_$(NAME)):CALCX" ) 
+{
+	field( DESC, "x-axis times" )
+	field( CALC, "(B>0)?IX*C/(A*B):IX" )
+	field( INPA, "$(N_SAMPLES=300)" )
+	field( INPB, "$(S_PER_X_EGU)" )
+	field( INPC, "$(PERIOD)" )
+	field( NELM, "$(N_SAMPLES=300)" )
+	field( PINI, "YES" )
+	field( SCAN, "Passive" )
+	field( EGU,  "$(X_EGU)" )
+	field( PREC, "3" )
+	field( OUT,  "$(OUT=$(PV)_$(NAME)):X-AXIS PP" )
+}
+
+record( waveform, "$(OUT=$(PV)_$(NAME)):X-AXIS" ) 
+{
+	field( DESC, "x-axis times" )
+	field( SCAN, "Passive" )
+	field( DTYP, "Soft Channel" )
+	field( FTVL, "FLOAT" )
+	field( NELM, "$(N_SAMPLES=300)" )
+	field( EGU,  "$(X_EGU)" )
+	field( PREC,  "3" )
 }
 

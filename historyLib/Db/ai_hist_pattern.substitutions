@@ -20,16 +20,16 @@
 file pv_history.template
 {
 	pattern
-	{	NAME,		PERIOD,		PV		}
-	{	"LAST_N",	0,			"$(PV)"	}
-	{	"1MIN",		60,			"$(PV)"	}
-	{	"6MIN",		360,		"$(PV)"	}
-	{	"30MIN",	1800,		"$(PV)"	}
-	{	"1HR",		3600,		"$(PV)"	}
-	{	"6HR",		21600,		"$(PV)"	}
-	{	"24HR",		86400,		"$(PV)"	}
-	{	"3DAY",		259200,		"$(PV)"	}
-	{	"WEEK",		604800,		"$(PV)"	}
+	{	NAME,		PERIOD,		N_SAMPLES,			X_EGU,	S_PER_X_EGU	}
+	{	"LAST_N",	0,			'$(N_SAMPLES=300)' 	N,		0			}
+	{	"1MIN",		60,			'$(N_SAMPLES=300)'	s,		1			}
+	{	"6MIN",		360,		'$(N_SAMPLES=300)'	min,	60			}
+	{	"30MIN",	1800,		'$(N_SAMPLES=300)'	min,	60			}
+	{	"1HR",		3600,		'$(N_SAMPLES=300)'	min,	60			}
+	{	"6HR",		21600,		'$(N_SAMPLES=300)'	hr,		3600		}
+	{	"24HR",		86400,		'$(N_SAMPLES=300)'	hr,		3600		}
+	{	"3DAY",		259200,		'$(N_SAMPLES=300)'	hr,		3600		}
+	{	"WEEK",		604800,		'$(N_SAMPLES=300)'	days,	86400		}
 }
 
 
@@ -39,7 +39,7 @@ file pv_history.template
 #	$(WAVE)_AVG		- ai record for waveform avg value
 #	$(WAVE)_MAX		- ai record for waveform max value
 #	$(WAVE)_MIN		- ai record for waveform min value
-#	$(WAVE)_STD		- ai record for waveform std deviation
+#	$(WAVE)_STD	- ai record for waveform std deviation
 #	$(WAVE)_SLOPE	- ai record for waveform least squares slope
 #	$(WAVE)_OFFSET	- ai record for waveform least squares offset
 #
@@ -48,22 +48,22 @@ file pv_history.template
 file wave_proc.template
 {
 	pattern
-	{	WAVE			}
-	{	$(PV)_LAST_N	}
-	{	$(PV)_1MIN		}
-	{	$(PV)_6MIN		}
-	{	$(PV)_30MIN		}
-	{	$(PV)_1HR		}
-	{	$(PV)_6HR		}
-	{	$(PV)_24HR		}
-	{	$(PV)_3DAY		}
-	{	$(PV)_WEEK		}
+	{	WAVE,			NELM			}
+	{	"$(PV)_LAST_N",	'$(N_SAMPLES=300)'}
+	{	"$(PV)_1MIN",	'$(N_SAMPLES=300)'}
+	{	"$(PV)_6MIN",	'$(N_SAMPLES=300)'}
+	{	"$(PV)_30MIN",	'$(N_SAMPLES=300)'}
+	{	"$(PV)_1HR",	'$(N_SAMPLES=300)'}
+	{	"$(PV)_6HR",	'$(N_SAMPLES=300)'}
+	{	"$(PV)_24HR", 	'$(N_SAMPLES=300)'}
+	{	"$(PV)_3DAY", 	'$(N_SAMPLES=300)'}
+	{	"$(PV)_WEEK", 	'$(N_SAMPLES=300)'}
 }
 
 # This template provides aliases for easy access to the LAST_N stats
-# Ex:  alias( "$(PV)_LAST_N_MAX", "$(PV)_MAX" )
+# Ex:  alias( '$(PV)_LAST_N_MAX', '$(PV)_MAX' )
 file stats_aliases.template
 {
-	{	PV	= "$(PV)"	}
+	{	PV	= '$(PV)'	}
 }
 

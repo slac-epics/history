@@ -22,7 +22,7 @@
 # OUTB:	MIN    - ai PV - Min of all samples
 # OUTC:	MAX    - ai PV - Max of all samples
 # OUTD:	AVG    - ai PV - Average sample value
-# OUTE: STD    - ai PV - Std deviation 
+# OUTE: STD - ai PV - Std deviation 
 # OUTF: SLOPE  - ai PV - Slope of linear least squares fit
 # OUTG: OFFSET - ai PV - Offset of linear least squares fit
 record( aSub, "$(WAVE)_RMS_SUB" )
@@ -71,6 +71,7 @@ record( ai, "$(WAVE)_MAX" )
 	field( DESC, "MAX for waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
+	info(autosaveFields, "HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC")
 }
 
 record( ai, "$(WAVE)_AVG" )
@@ -78,6 +79,7 @@ record( ai, "$(WAVE)_AVG" )
 	field( DESC, "AVG of waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
+	info(autosaveFields, "HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC")
 }
 
 record( ai, "$(WAVE)_MIN" )
@@ -85,6 +87,7 @@ record( ai, "$(WAVE)_MIN" )
 	field( DESC, "MIN for waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
+	info(autosaveFields, "HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC")
 }
 
 record( ai, "$(WAVE)_RMS" )
@@ -98,6 +101,7 @@ record( ai, "$(WAVE)_RMS" )
 	field( PREC, "4" )
 	field( LLSV,  "MAJOR" )
 	field( LSV,   "MINOR" )
+	info(autosaveFields, "HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC")
 }
 
 record( ai, "$(WAVE)_STD" )
@@ -105,6 +109,7 @@ record( ai, "$(WAVE)_STD" )
 	field( DESC, "StdDev for waveform" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
+	info(autosaveFields, "HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC")
 }
 
 record( ai, "$(WAVE)_SLOPE" )
@@ -112,6 +117,7 @@ record( ai, "$(WAVE)_SLOPE" )
 	field( DESC, "Best fit linear slope" )
 	field( EGU,  "$(EGU)/s" )
 	field( PREC, "4" )
+	info(autosaveFields, "HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC")
 }
 
 record( ai, "$(WAVE)_OFFSET" )
@@ -119,5 +125,6 @@ record( ai, "$(WAVE)_OFFSET" )
 	field( DESC, "Offset of least squares fit" )
 	field( EGU,  "$(EGU)" )
 	field( PREC, "4" )
+	info(autosaveFields, "HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC")
 }
 
