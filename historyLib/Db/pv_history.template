@@ -5,8 +5,10 @@
 #	Macros:
 #		PV			- Name of PV to track
 #		PERIOD		- Time period over which to retain history, in seconds
+#						If zero, each sample gets shifted into the buffer
 #		N_SAMPLES	- Number of samples to keep, Output waveform's NELEM
 #						Defaults to 300
+#		EGU			- EGU for sample data, defaults to ""
 #		X_EGU		- Units to display on the time axis
 #		S_PER_X_EGU	- Conversion between seconds and X_EGU, e.g. 3600 for hrs
 #		NAME		- Name of this time period
@@ -41,7 +43,7 @@ record( aSub, "$(OUT=$(PV)_$(NAME))_SUB" )
 
 	field( FTT, "DOUBLE" )
 	field( NOT, 1 )
-	field( INPT, "$(PERIOD)" )
+	field( INPT, "$(PERIOD=0)" )
 
 	field( FTVA, "DOUBLE" )
 	field( NOVA, $(N_SAMPLES=300) )
@@ -53,6 +55,7 @@ record( waveform, "$(OUT=$(PV)_$(NAME))" )
 {
     field( DESC, "$(DESC=$(NAME) Hist)" )
 	field( FTVL, "DOUBLE" )
+	field( EGU,  "$(EGU=)" )
 	field( NELM, $(N_SAMPLES=300) )
 	field( TSEL, "$(PV).TIME" )
 	info( autosaveFields, "VAL" )
@@ -64,12 +67,12 @@ record( acalcout, "$(OUT=$(PV)_$(NAME)):CALCX" )
 	field( DESC, "x-axis times" )
 	field( CALC, "(B>0)?IX*C/(A*B):IX" )
 	field( INPA, "$(N_SAMPLES=300)" )
-	field( INPB, "$(S_PER_X_EGU)" )
-	field( INPC, "$(PERIOD)" )
+	field( INPB, "$(S_PER_X_EGU=0)" )
+	field( INPC, "$(PERIOD=0)" )
 	field( NELM, "$(N_SAMPLES=300)" )
 	field( PINI, "YES" )
 	field( SCAN, "Passive" )
-	field( EGU,  "$(X_EGU)" )
+	field( EGU,  "$(X_EGU=N)" )
 	field( PREC, "3" )
 	field( OUT,  "$(OUT=$(PV)_$(NAME)):X-AXIS PP" )
 }
@@ -81,7 +84,7 @@ record( waveform, "$(OUT=$(PV)_$(NAME)):X-AXIS" )
 	field( DTYP, "Soft Channel" )
 	field( FTVL, "FLOAT" )
 	field( NELM, "$(N_SAMPLES=300)" )
-	field( EGU,  "$(X_EGU)" )
+	field( EGU,  "$(X_EGU=N)" )
 	field( PREC,  "3" )
 }
 

@@ -5,13 +5,26 @@
 # along with wave processing to create the MAX, MIN,
 # RMS, and STD for each.
 #
-# Macro names
-#	PV		- PV name for the ai record to capture
-#	NAME	- Name of capture interval
-#	PERIOD	- Seconds in capture interval
+# Required Macro Names
+#	PV			- PV name for the ai record to capture
+# Optional Macro Names
+#	N_SAMPLES	- Number of samples in buffers, defaults at db load to 300
+#	EGU			- EGU for sample data, defaults at db load to "" 
+#
+# The history module generates ai_hist_pattern.db from
+# this sample substitutions file.
+#
+# For casual usage, use this in your st.cmd file:
+# dbLoadRecord( "db/ai_hist_pattern.db", "PV=<your_pv>" )
+# or you can also specify N_SAMPLES or EGU
+# dbLoadRecord( "db/ai_hist_pattern.db", "PV=TST:AIN:01,N_SAMPLES=100,EGU=ps" )
+#
+# If you have many pv's to take history for,
+# use ai_hist_pattern.db as the template in your substitutions file
+#
 
 # Create history PV's
-# This substitution creates two PV's per instance
+# pv_history.template creates two PV's per instance
 #   $(PV)_$(NAME)_SUB	- aSub record to do processing
 #	$(PV)_$(NAME)		- waveform record for the history data
 #
@@ -20,44 +33,45 @@
 file pv_history.template
 {
 	pattern
-	{	NAME,		PERIOD,		N_SAMPLES,			X_EGU,	S_PER_X_EGU	}
-	{	"LAST_N",	0,			'$(N_SAMPLES=300)' 	N,		0			}
-	{	"1MIN",		60,			'$(N_SAMPLES=300)'	s,		1			}
-	{	"6MIN",		360,		'$(N_SAMPLES=300)'	min,	60			}
-	{	"30MIN",	1800,		'$(N_SAMPLES=300)'	min,	60			}
-	{	"1HR",		3600,		'$(N_SAMPLES=300)'	min,	60			}
-	{	"6HR",		21600,		'$(N_SAMPLES=300)'	hr,		3600		}
-	{	"24HR",		86400,		'$(N_SAMPLES=300)'	hr,		3600		}
-	{	"3DAY",		259200,		'$(N_SAMPLES=300)'	hr,		3600		}
-	{	"WEEK",		604800,		'$(N_SAMPLES=300)'	days,	86400		}
+	{	NAME,		PERIOD,		X_EGU,	S_PER_X_EGU,	N_SAMPLES,			EGU		}
+	{	"LAST_N",	0,			N,		0,			'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"1MIN",		60,			s,		1,			'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"6MIN",		360,		min,	60,			'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"30MIN",	1800,		min,	60,			'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"1HR",		3600,		min,	60,			'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"6HR",		21600,		hr,		3600,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"24HR",		86400,		hr,		3600,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"3DAY",		259200,		hr,		3600,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"WEEK",		604800,		days,	86400,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
 }
 
 
 # Create waveform processing records
-# This substitution creates two PV's per instance
+# wave_proc.template creates two PV's per instance
 #   $(WAVE)_RMS_SUB	- aSub record to do processing
 #	$(WAVE)_AVG		- ai record for waveform avg value
 #	$(WAVE)_MAX		- ai record for waveform max value
 #	$(WAVE)_MIN		- ai record for waveform min value
-#	$(WAVE)_STD	- ai record for waveform std deviation
+#	$(WAVE)_STD		- ai record for waveform std deviation
 #	$(WAVE)_SLOPE	- ai record for waveform least squares slope
 #	$(WAVE)_OFFSET	- ai record for waveform least squares offset
 #
 # Generally you'll want one instance here for each
 # period you include above
+#
 file wave_proc.template
 {
 	pattern
-	{	WAVE,			NELM			}
-	{	"$(PV)_LAST_N",	'$(N_SAMPLES=300)'}
-	{	"$(PV)_1MIN",	'$(N_SAMPLES=300)'}
-	{	"$(PV)_6MIN",	'$(N_SAMPLES=300)'}
-	{	"$(PV)_30MIN",	'$(N_SAMPLES=300)'}
-	{	"$(PV)_1HR",	'$(N_SAMPLES=300)'}
-	{	"$(PV)_6HR",	'$(N_SAMPLES=300)'}
-	{	"$(PV)_24HR", 	'$(N_SAMPLES=300)'}
-	{	"$(PV)_3DAY", 	'$(N_SAMPLES=300)'}
-	{	"$(PV)_WEEK", 	'$(N_SAMPLES=300)'}
+	{	WAVE,			NELM,					EGU			}
+	{	"$(PV)_LAST_N",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_1MIN",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_6MIN",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_30MIN",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_1HR",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_6HR",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_24HR", 	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_3DAY", 	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_WEEK", 	'$(N_SAMPLES=300)',		'$(EGU=)'	}
 }
 
 # This template provides aliases for easy access to the LAST_N stats

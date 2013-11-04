@@ -1,0 +1,45 @@
+#
+# ai_hist_last_x.substitutions
+#
+# Required Macro Names
+#	PV		- PV name for the ai record to capture
+#	X		- History Buffer Size
+#
+# This substitutions file creates a db file,
+#	ai_hist_last_x.db
+# which creates the following PV's:
+#
+#	$(PV)_LAST_$(X)			- waveform record which holds the last X samples
+#	$(PV)_LAST_$(X)_AVG		- ai record for waveform avg value
+#	$(PV)_LAST_$(X)_MAX		- ai record for waveform max value
+#	$(PV)_LAST_$(X)_MIN		- ai record for waveform min value
+#	$(PV)_LAST_$(X)_STD		- ai record for waveform std deviation
+#	$(PV)_LAST_$(X)_SLOPE	- ai record for waveform least squares slope
+#	$(PV)_LAST_$(X)_OFFSET	- ai record for waveform least squares offset
+#   $(PV)_LAST_$(X)_SUB		- Internal aSub record to do processing
+#   $(PV)_LAST_$(X)_RMS_SUB	- Internal aSub record to do processing
+#
+# The history buffer size can be specified at load time via macro X.
+#
+# For example, PV=HIST:TEST:01, X=30, yields
+# HIST:TEST:01_LAST_30		# waveform record
+# HIST:TEST:01_LAST_30_AVG
+# HIST:TEST:01_LAST_30_MAX
+# HIST:TEST:01_LAST_30_MIN
+# HIST:TEST:01_LAST_30_STD
+# HIST:TEST:01_LAST_30_SLOPE
+# HIST:TEST:01_LAST_30_OFFSET
+
+file pv_history.template
+{
+	pattern
+	{	NAME,				N_SAMPLES,	EGU			}
+	{	"LAST_$(X)",		"$(X)",		'$(EGU=)'	}
+}
+file wave_proc.template
+{
+	pattern
+	{	WAVE,				NELM,		EGU			}
+	{	"$(PV)_LAST_$(X)",	"$(X)",		'$(EGU=)'	}
+}
+

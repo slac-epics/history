@@ -15,8 +15,8 @@ DB += wave_proc.template
 DB += ai_hist.substitutions
 DB += ai_hist_pattern.db
 DB += ai_hist_pattern.substitutions
-DB += wave_proc_hist.db
-DB += wave_proc_hist.substitutions
+DB += ai_hist_last_x.db
+DB += ai_hist_last_x.substitutions
 DB += stats_aliases.template
 
 #----------------------------------------------------
