@@ -7,6 +7,12 @@ MAX, AVG, RMS, and StdDev values.
 
 (I,Q) to polar (R,T) conversion is also supported.
 
+Release R0.5.0, Jan 2013.
+Slope and Offset added
+
+Release R1.9.0, Oct 2013
+X-AXIS waveform added
+
 TODO: Consider merging in ANL's waveProc module
 to add FFT spectrum analysis and additional 
 waveform signal statistics.

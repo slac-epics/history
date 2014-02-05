@@ -65,7 +65,7 @@ record( waveform, "$(OUT=$(PV)_$(NAME))" )
 record( acalcout, "$(OUT=$(PV)_$(NAME)):CALCX" ) 
 {
 	field( DESC, "x-axis times" )
-	field( CALC, "(B>0)?IX*C/(A*B):IX" )
+	field( CALC, "(B>0)?(IX+1-A)*C/(A*B):(IX+1-A)" )
 	field( INPA, "$(N_SAMPLES=300)" )
 	field( INPB, "$(S_PER_X_EGU=0)" )
 	field( INPC, "$(PERIOD=0)" )

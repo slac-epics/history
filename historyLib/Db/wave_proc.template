@@ -9,6 +9,10 @@
 # Optional macros
 # NELM          - Number of elements per history array (default 300)
 # EGU			- Engineering units: fs, C, mm, etc. (default "")
+# RMS_LOLO		- Low, low, limit (default "0")
+# RMS_LOW		- Low limit (default "0")
+# RMS_HIGH		- High limit (default "0")
+# RMS_HIHI		- High, high, limit (default "0")
 
 # RMS asub
 # Processing this PV computes the RMS value for the input array
@@ -22,7 +26,7 @@
 # OUTB:	MIN    - ai PV - Min of all samples
 # OUTC:	MAX    - ai PV - Max of all samples
 # OUTD:	AVG    - ai PV - Average sample value
-# OUTE: STD - ai PV - Std deviation 
+# OUTE: STD    - ai PV - Std deviation 
 # OUTF: SLOPE  - ai PV - Slope of linear least squares fit
 # OUTG: OFFSET - ai PV - Offset of linear least squares fit
 record( aSub, "$(WAVE)_RMS_SUB" )
