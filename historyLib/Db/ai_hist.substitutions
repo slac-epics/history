@@ -7,18 +7,18 @@
 # RMS, and STD for each history.
 #
 # Required Macros:
-#	PV		 - PV name
+#	PV		 	- PV name
 # Optional Macros:
-#	EGU		 - Engineering units, default to ""
-#	RMS_LOLO - Low  alarm   limit for $(PV)_LAST_N_RMS, default 0
-#	RMS_LOW  - Low  warning limit for $(PV)_LAST_N_RMS, default 0
-#	RMS_HIGH - High warning limit for $(PV)_LAST_N_RMS, default 0
-#	RMS_HIHI - High alarm   limit for $(PV)_LAST_N_RMS, default 0
+#	EGU			 - Engineering units, defaults to ""
+#	N_SAMPLES	 - Number of samples, defaults to 300
+#
+# For normal use, let N_SAMPLES default to 300 as
+# the edm screens assume 300 sample arrays.
 
 # Example
 file ai_hist_pattern.db
 {
 	pattern
-	{	PV,						EGU,	RMS_HIGH,	RMS_HIHI	}
-	{	"$(P)$(R)_temp1",		C,		23,			25.5		}
+	{	PV,						EGU		}
+	{	"$(P)$(R)_temp1",		C		}
 }
