@@ -1,5 +1,5 @@
-# wave_LAST_N.tpl-arch, archive list for waveform analysis PV's
-# Archives the calculated values for each waveform's statistical values
+# Soon to be obsolete!
+# Please switch to wave_proc.tpl-arch
 $(WAVE)_AVG		1
 $(WAVE)_MAX		1
 $(WAVE)_MIN		1

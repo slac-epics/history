@@ -1,0 +1,10 @@
+# wave_proc.tpl-arch, archive list for waveform analysis PV's
+# Archives the calculated values for each waveform's statistical values
+$(WAVE)_AVG		1
+$(WAVE)_MAX		1
+$(WAVE)_MIN		1
+$(WAVE)_RMS		1
+$(WAVE)_STD		1
+$(WAVE)_SLOPE	1
+$(WAVE)_OFFSET	1
+

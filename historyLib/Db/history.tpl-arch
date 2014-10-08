@@ -1,5 +1,11 @@
 # history.tpl-arch, archive list for history PV's
-# Archives the calculated historical values for each PV
+# Archives the calculated historical values for each interval
+#
+# Interval set based on default ai_hist_pattern.substitions
+#
+# interval in our default ai_hist_pattern.substitutions
+# TODO: Improve the abstraction layer here to make it
+# easier to handle custom sets of intervals
 $(PV)_LAST_N_AVG	1
 $(PV)_LAST_N_MAX	1
 $(PV)_LAST_N_MIN	1

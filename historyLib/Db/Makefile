@@ -12,12 +12,10 @@ include $(TOP)/configure/CONFIG
 # databases, templates, substitutions like this
 DB += pv_history.template
 DB += wave_proc.template
-DB += wave_proc_hist.db
 DB += wave_proc_hist.substitutions
 DB += ai_hist.substitutions
 DB += ai_hist_pattern.db
 DB += ai_hist_pattern.substitutions
-DB += ai_hist_last_x.db
 DB += ai_hist_last_x.substitutions
 DB += stats_aliases.template
 
@@ -33,10 +31,11 @@ REQ += wave_proc.tpl-req
 # Create and install (or just install)
 # Archive files, templates, substitutions like this
 # ARCHIVE += archive_history.archive
+ARCHIVE += history.sub-arch
 ARCHIVE += history.tpl-arch
 ARCHIVE += hist_LAST_N.tpl-arch
 ARCHIVE += wave_LAST_N.tpl-arch
-ARCHIVE += history.sub-arch
+ARCHIVE += wave_proc.tpl-arch
 
 include $(TOP)/configure/RULES
 #----------------------------------------

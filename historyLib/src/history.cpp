@@ -256,7 +256,19 @@ extern "C" long RMS_Init(	aSubRecord	*	pSub	)
 	return 0;
 }
 
-
+// Computes several statistics for an input waveform
+//	Slope and offset computed using least squares regression
+//	Inputs:
+//		A	- Waveform
+//	Outputs:
+//		A	- RMS
+//		B	- MAX
+//		C	- MIN
+//		D	- MAX
+//		E	- AVG
+//		F	- STD
+//		G	- SLOPE
+//		C	- OFFSET
 extern "C" long RMS_Process( aSubRecord	*	pSub	)
 {
 	//

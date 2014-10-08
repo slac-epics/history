@@ -55,6 +55,9 @@ menuLabel {
 symbols {
   0 "PV=$(SIG)"
 }
+setPosition {
+  0 "button"
+}
 icon
 endObjectProperties
 

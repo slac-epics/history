@@ -1,16 +1,17 @@
 #
+# Sample
 # history archive substitutions file
 #
 
-# Generate history archive file 
-#	Macros:
-#		TODO:	List here any macros used in the template
-#				Note which ones have defaults.
-file archive_history.template
+# Generates full history archiving for the stats
+# from each interval in history.tpl-arch
+#
+# Required Macros:
+#	PV:	PV name
+file history.tpl-arch
 {
 	{
-		# Hack till msi supports empty substitutions
-		IOC		=	$(IOC),
+		PV		=	"SAMPLE:PV:NAME"
 	}
 }
 

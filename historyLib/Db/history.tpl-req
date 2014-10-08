@@ -1,10 +1,79 @@
 #
-# Autosave template for history
+# Autosave template for PV history processing
+# Use this template to autosave the stat limits for
+# the LAST_N history buffers
 #
-# Syntax:	<pv_name>
-# Example:	TST:R00:IOC:00:HIGH_LIMIT 
+# Interval set based on default ai_hist_pattern.substitions
 #
+# TODO: Improve the abstraction layer here to make it
+# easier to handle custom sets of intervals
+#
+$(PV)_LAST_N_AVG.HHSV
+$(PV)_LAST_N_AVG.HIGH
+$(PV)_LAST_N_AVG.HIHI
+$(PV)_LAST_N_AVG.HSV
+$(PV)_LAST_N_AVG.LLSV
+$(PV)_LAST_N_AVG.LOLO
+$(PV)_LAST_N_AVG.LOW
+$(PV)_LAST_N_AVG.LSV
+$(PV)_LAST_N_AVG.PREC
 
-# TODO:	Add a list of PV's which should be saved
-# periodically and restored when the IOC reboots
+$(PV)_LAST_N_MAX.HHSV
+$(PV)_LAST_N_MAX.HIGH
+$(PV)_LAST_N_MAX.HIHI
+$(PV)_LAST_N_MAX.HSV
+$(PV)_LAST_N_MAX.LLSV
+$(PV)_LAST_N_MAX.LOLO
+$(PV)_LAST_N_MAX.LOW
+$(PV)_LAST_N_MAX.LSV
+$(PV)_LAST_N_MAX.PREC
 
+$(PV)_LAST_N_MIN.HHSV
+$(PV)_LAST_N_MIN.HIGH
+$(PV)_LAST_N_MIN.HIHI
+$(PV)_LAST_N_MIN.HSV
+$(PV)_LAST_N_MIN.LLSV
+$(PV)_LAST_N_MIN.LOLO
+$(PV)_LAST_N_MIN.LOW
+$(PV)_LAST_N_MIN.LSV
+$(PV)_LAST_N_MIN.PREC
+
+$(PV)_LAST_N_RMS.HHSV
+$(PV)_LAST_N_RMS.HIGH
+$(PV)_LAST_N_RMS.HIHI
+$(PV)_LAST_N_RMS.HSV
+$(PV)_LAST_N_RMS.LLSV
+$(PV)_LAST_N_RMS.LOLO
+$(PV)_LAST_N_RMS.LOW
+$(PV)_LAST_N_RMS.LSV
+$(PV)_LAST_N_RMS.PREC
+
+$(PV)_LAST_N_STD.HHSV
+$(PV)_LAST_N_STD.HIGH
+$(PV)_LAST_N_STD.HIHI
+$(PV)_LAST_N_STD.HSV
+$(PV)_LAST_N_STD.LLSV
+$(PV)_LAST_N_STD.LOLO
+$(PV)_LAST_N_STD.LOW
+$(PV)_LAST_N_STD.LSV
+$(PV)_LAST_N_STD.PREC
+
+$(PV)_LAST_N_SLOPE.HHSV
+$(PV)_LAST_N_SLOPE.HIGH
+$(PV)_LAST_N_SLOPE.HIHI
+$(PV)_LAST_N_SLOPE.HSV
+$(PV)_LAST_N_SLOPE.LLSV
+$(PV)_LAST_N_SLOPE.LOLO
+$(PV)_LAST_N_SLOPE.LOW
+$(PV)_LAST_N_SLOPE.LSV
+$(PV)_LAST_N_SLOPE.PREC
+
+$(PV)_LAST_N_OFFSET.HHSV
+$(PV)_LAST_N_OFFSET.HIGH
+$(PV)_LAST_N_OFFSET.HIHI
+$(PV)_LAST_N_OFFSET.HSV
+$(PV)_LAST_N_OFFSET.LLSV
+$(PV)_LAST_N_OFFSET.LOLO
+$(PV)_LAST_N_OFFSET.LOW
+$(PV)_LAST_N_OFFSET.LSV
+$(PV)_LAST_N_OFFSET.PREC

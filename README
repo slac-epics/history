@@ -16,3 +16,54 @@ X-AXIS waveform added
 TODO: Consider merging in ANL's waveProc module
 to add FFT spectrum analysis and additional 
 waveform signal statistics.
+
+******************************************
+
+How to use the history module:
+
+Replace "sample" below w/ your app name
+Add to $(TOP)/configure/RELEASE
+CALC=<path to calc module release's $(TOP)
+HISTORY=<path to history module release's $(TOP)
+Add to $(TOP)/sampleApp/src/Makefile
+SAMPLE_DBD += history
+SAMPLE_DBD += calcSupport
+SAMPLE_LIBS += calc
+SAMPLE_LIBS += history
+
+In your $(TOP)/sampleApp/Db directory
+Create substitutions files, based on examples in history
+release's db, archive, and autosave directories
+
+#	For a generic PV history with a set of history buffers
+	defined by the pattern file $(HISTORY)/db/ai_hist_pattern.db
+			See ai_hist.substitutions
+	You can also create a custom history pattern using
+	ai_hist_pattern.substiutions as an example, and
+	use it instead of ai_hist_pattern.db in your version
+	of ai_hist.substitutions.
+	Related files:
+		history.tpl-arch,     archives  stats for a PV's full set of history buffers
+		history.tpl-req,      autosaves stat limits for a PV's full set of history buffers
+		hist_LAST_N.tpl-arch, archives  stats for a PV's LAST_N history buffer
+		hist_LAST_N.tpl-arch, autosaves stat limits for a PV's LAST_N history buffer
+
+#	For a PV history with a bootup configurable buffer size
+		See ai_hist_last_x.substitutions
+
+#	For Waveform analysis, try wave_proc_hist.substitutions
+	For each waveform update, it uses wave_proc.template to compute:
+		max, min, avg, rms, stdDev, slope, and offset
+		keeps history of these stats with configurable intervals
+	Related files:
+		wave_proc.tpl-arch, archives stats for the waveform from wave_proc.template
+		wave_proc.tpl-req,  autosaves stat limits for the waveform from wave_proc.template
+
+
+Finally, update the build macros in $(TOP)/sampleApp/Db/Makefile,
+substituting sample_hist for the substitution filenames
+you create from the samples in the history module. 
+DB		+= sample_hist.db
+ARCHIVE += sample_hist.arch
+REQ     += sample_hist.req
+

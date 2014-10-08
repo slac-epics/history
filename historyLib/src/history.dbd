@@ -1,8 +1,14 @@
 include "base.dbd"
 
+function(History_Init)
+function(History_Process)
+function(Polar_Init)
+function(Polar_Process)
 function(RMS_Init)
 function(RMS_Process)
+
 variable(DEBUG_HIST)
 variable(DEBUG_POLAR)
 variable(DEBUG_RMS)
+
 registrar(RMS_Register)

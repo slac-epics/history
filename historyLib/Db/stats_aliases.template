@@ -1,8 +1,8 @@
 # In some screens, you want to say "display statistic X" without being too
 # particular about the data set. Use these aliases to hide that part of the PV
 
-alias( "$(PV)_LAST_N_MAX",    "$(PV)_MAX" )
 alias( "$(PV)_LAST_N_AVG",    "$(PV)_AVG" )
+alias( "$(PV)_LAST_N_MAX",    "$(PV)_MAX" )
 alias( "$(PV)_LAST_N_MIN",    "$(PV)_MIN" )
 alias( "$(PV)_LAST_N_RMS",    "$(PV)_RMS" )
 alias( "$(PV)_LAST_N_STD",    "$(PV)_STD" )

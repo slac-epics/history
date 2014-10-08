@@ -1,16 +1,15 @@
 #
+# Sample
 # history autosave substitutions file
 #
 
 # Generate history autosave file 
-#	Macros:
-#		TODO:	List here any macros used in the template
-#				Note which ones have defaults.
-file autosave_history.template
+# Required Macros:
+#	PV:	PV name
+file history.tpl-req
 {
 	{
-		# Hack till msi supports empty substitutions
-		IOC		=	$(IOC),
+		PV		=	"SAMPLE:PV:NAME"
 	}
 }
 
