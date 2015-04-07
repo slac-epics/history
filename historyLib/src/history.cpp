@@ -78,6 +78,7 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	HistoryData	*	pHistoryData	= static_cast<HistoryData *>( pSub->dpvt );
 	assert( pSub->fta == DBR_DOUBLE );
 	double		*	pData			= static_cast<double *>( pSub->a );
+#if 0
 	if ( isnan(*pData) )
 	{
 		if ( DEBUG_HIST >= 2 )
@@ -85,6 +86,7 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 		recGblSetSevr( pSub, CALC_ALARM, INVALID_ALARM );
 		return 1;
 	}
+#endif
 
 	//	Calculate our sample interval and the time delta's
 	//	The asub record's TSEL is $(PV).TIME, so the asub's timestamp
@@ -277,9 +279,6 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 
 	//	Get data
 	assert( pSub->fta == DBR_DOUBLE );
-	double			rmsVal	= 0.0;
-	double			avgVal	= 0.0;
-	double			stdDev	= 0.0;
 	double			sumX	= 0.0;
 	double			sumY	= 0.0;
 	double			sumXX	= 0.0;
@@ -287,13 +286,17 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 	double			sumYY	= 0.0;
 
 	double		*	pData	= static_cast<double *>( pSub->a );
-	double			minVal	= *pData;
-	double			maxVal	= *pData;
+	double			minVal	= NAN;
+	double			maxVal	= NAN;
+	double			nVal	= 0;
 	for ( epicsUInt32 i = 0; i < pSub->noa; ++i )
 	{
 		double		dblVal	= *pData++;
-		minVal	= min( dblVal, minVal );
-		maxVal	= max( dblVal, maxVal );
+		if ( isnan(dblVal) )
+			continue;
+		nVal++;
+		minVal	= isnan(minVal) ? *pData : min( dblVal, minVal );
+		maxVal	= isnan(maxVal) ? *pData : max( dblVal, maxVal );
 
 		// Sums needed for least squares regression
 		sumX	+= i;
@@ -302,23 +305,35 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 		sumY	+= dblVal;
 		sumYY	+= dblVal * dblVal;
 	}
-	rmsVal	=	sqrt( sumYY / pSub->noa );
-	avgVal	=	sumY / pSub->noa;
-
-	//	Calc stdDev relative to avgVal
-	pData	= static_cast<double *>( pSub->a );
-	for ( epicsUInt32 i = 0; i < pSub->noa; ++i )
+	double			avgVal	= NAN;
+	double			stdDev	= NAN;
+	double			rmsVal	= NAN;
+	double			slope	= NAN;
+	double			offset	= NAN;
+	if ( nVal != 0 )
 	{
-		double		dblVal	= *pData++ - avgVal;
-		stdDev += (dblVal * dblVal);
-	}
-	stdDev	=	sqrt( stdDev / pSub->noa );
+		stdDev	=	0.0;
+		avgVal	=	sumY / nVal;
 
-	// Calculate the least squares regression
-	//	http://en.wikipedia.org/wiki/Simple_linear_regression
-	double			slope	=	(	(pSub->noa * sumXY - sumX * sumY)
-								/	(pSub->noa * sumXX - sumX * sumX) );
-	double			offset	= sumY / pSub->noa - slope * sumX / pSub->noa;
+		//	Calc stdDev relative to avgVal
+		pData	= static_cast<double *>( pSub->a );
+		for ( epicsUInt32 i = 0; i < pSub->noa; ++i )
+		{
+			if ( isnan(*pData) )
+				continue;
+			double		dblVal	= *pData++;
+			dblVal	-= avgVal;
+			stdDev += (dblVal * dblVal);
+		}
+		stdDev	=	sqrt( stdDev / nVal );
+		rmsVal	=	sqrt( sumYY  / nVal );
+
+		// Calculate the least squares regression
+		//	http://en.wikipedia.org/wiki/Simple_linear_regression
+		slope	=	(	(nVal * sumXY - sumX * sumY)
+					/	(nVal * sumXX - sumX * sumX) );
+		offset	= sumY / nVal - slope * sumX / nVal;
+	}
 
 	//	Write the output
 	double		*	pOut;
