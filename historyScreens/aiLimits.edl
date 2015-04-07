@@ -1057,7 +1057,7 @@ buttonLabel "IOC"
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "iocscreens/ioc_rtems_acsw.edl"
+  0 "iocScreens/ioc_soft.edl"
 }
 menuLabel {
   0 "IOC"

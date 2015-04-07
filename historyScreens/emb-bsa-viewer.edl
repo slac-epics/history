@@ -1,0 +1,604 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 561
+y 1270
+w 1305
+h 344
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-bold-r-12.0"
+ctlFontAlign "center"
+btnFont "helvetica-medium-r-14.0"
+btnFontAlign "center"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 14
+ctlFgColor2 index 0
+ctlBgColor1 index 0
+ctlBgColor2 index 14
+topShadowColor index 0
+botShadowColor index 14
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 40
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 80
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 120
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 160
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 200
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 240
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 280
+w 100
+h 40
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+# Geometry
+x 100
+y 0
+w 1196
+h 320
+# Appearance
+border
+plotAreaBorder
+autoScaleBothDirections
+autoScaleUpdateMs 7000
+autoScaleThreshPct 80
+fgColor index 14
+bgColor index 10
+gridColor index 5
+font "helvetica-bold-r-12.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 2800
+updateTimerMs 50
+# X axis properties
+showXAxis
+xAxisSrc "fromUser"
+xMin 0
+xMax 2799
+xLabelIntervals 2
+xMajorsPerLabel 2
+xMinorsPerMajor 2
+xShowLabelGrid
+# Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+yMax 1
+yLabelIntervals 2
+yMajorsPerLabel 2
+yMinorsPerMajor 2
+yShowLabelGrid
+# Y2 axis properties
+y2AxisSrc "AutoScale"
+y2Max 1
+# Trace Properties
+numTraces 1
+yPv {
+  0 "$(SIG)_$(DUR)"
+}
+plotUpdateMode {
+  0 "y"
+}
+plotColor {
+  0 index 26
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 40
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "MAX"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 60
+w 100
+h 20
+controlPv "$(SIG)_$(DUR)_MAX"
+font "helvetica-medium-i-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 80
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "AVG"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 100
+w 100
+h 20
+controlPv "$(SIG)_$(DUR)_AVG"
+font "helvetica-medium-i-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 160
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "STD"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 180
+w 100
+h 20
+controlPv "$(SIG)_$(DUR)_STD"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 200
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "MIN"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 220
+w 100
+h 20
+controlPv "$(SIG)_$(DUR)_MIN"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 240
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Slope"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 260
+w 100
+h 20
+controlPv "$(SIG)_$(DUR)_SLOPE"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 280
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Offset"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 300
+w 100
+h 20
+controlPv "$(SIG)_$(DUR)_OFFSET"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 0
+y 120
+w 112
+h 40
+fgColor index 14
+bgColor index 6
+topShadowColor index 1
+botShadowColor index 14
+font "helvetica-medium-r-14.0"
+invisible
+buttonLabel "Limits"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "historyScreens/aiLimits.edl"
+}
+menuLabel {
+  0 "Limits"
+}
+setPosition {
+  0 "button"
+}
+symbols {
+  0 "PV=$(SIG)_$(DUR)_RMS"
+}
+replaceSymbols {
+  0 1
+}
+propagateMacros {
+  0 0
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 140
+w 100
+h 20
+controlPv "$(SIG)_$(DUR)_RMS"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+fgAlarm
+bgColor index 5
+useDisplayBg
+limitsFromDb
+nullColor index 0
+smartRefresh
+useHexPrefix
+newPos
+objType "monitors"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 120
+w 100
+h 20
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "RMS"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 0
+w 100
+h 40
+font "helvetica-medium-r-18.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "BSA"
+}
+border
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 4
+y 0
+w 104
+h 40
+fgColor index 14
+bgColor index 70
+topShadowColor index 45
+botShadowColor index 47
+font "helvetica-medium-r-14.0"
+invisible
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "historyScreens/histViewer.edl"
+}
+menuLabel {
+  0 "History"
+}
+setPosition {
+  0 "button"
+}
+symbols {
+  0 "SIG=$(SIG),DUR=1MIN"
+}
+replaceSymbols {
+  0 1
+}
+propagateMacros {
+  0 0
+}
+endObjectProperties
+
