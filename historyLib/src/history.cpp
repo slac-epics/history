@@ -45,13 +45,28 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 	if ( DEBUG_HIST >= 2 )
 		cout	<< "History_Init: " << string(pSub->name) << endl;
 
+	if ( pSub->fta != DBR_DOUBLE )
+	{
+		fprintf( stderr, "History_Init %s: INPA must be type DOUBLE!\n", pSub->name );
+		return -1;
+	}
+	if ( pSub->ftva != DBR_DOUBLE )
+	{
+		fprintf( stderr, "History_Init %s: OUTA must be type DOUBLE!\n", pSub->name );
+		return -1;
+	}
+
 	HistoryData		*	pHistoryData	= new HistoryData;
 	epicsTimeGetCurrent( &pHistoryData->m_BootTime );
-	epicsTimeGetCurrent( &pHistoryData->m_TimePrior );
-	pSub->dpvt							= pHistoryData;
-	pSub->neva							= 0;
+	pHistoryData->m_TimePrior.secPastEpoch	= 0;
+	pHistoryData->m_TimePrior.nsec			= 0;
+	pSub->dpvt								= pHistoryData;
+	pSub->neva								= 0;
 
-	memset( static_cast<double *>( pSub->vala ), 0, sizeof(double) );
+	// Initialize buffer to NAN as zero isn't appropriate for undefined values
+	double		*	pOut	= static_cast<double *>( pSub->vala );
+	for ( epicsUInt32 i = 0; i < pSub->nova - 1; ++i )
+		*pOut++	= NAN;
 	return 0;
 }
 
@@ -63,30 +78,22 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 /// period divided by the size of the output array.
 ///	Inputs:
 ///		A	- a single scalar value
-///		T	- a time period in seconds
+///		T	- a time period in seconds (zero to update on monitor)
 ///	Outputs:
 ///		A	- Array with one point for each time period
 ///
 extern "C" long History_Process( aSubRecord	*	pSub	)
 {
-	//
-	//	Get PV values
-	//
+	// Get ptr to history data for this record
+	HistoryData	*	pHistoryData	= static_cast<HistoryData *>( pSub->dpvt );
+
+	//	Get current timestamp
 	epicsTimeStamp		curTime;
 	epicsTimeGetCurrent( &curTime );
 
-	HistoryData	*	pHistoryData	= static_cast<HistoryData *>( pSub->dpvt );
-	assert( pSub->fta == DBR_DOUBLE );
-	double		*	pData			= static_cast<double *>( pSub->a );
-#if 0
-	if ( isnan(*pData) )
-	{
-		if ( DEBUG_HIST >= 2 )
-			cout	<< string(pSub->name) << ": value is nan!"	<<	endl;
-		recGblSetSevr( pSub, CALC_ALARM, INVALID_ALARM );
-		return 1;
-	}
-#endif
+	// Get input data's timestamp
+	epicsTimeStamp		dataTime;
+	int timeStatus	= dbGetTimeStamp( &pSub->inpa, &dataTime );
 
 	//	Calculate our sample interval and the time delta's
 	//	The asub record's TSEL is $(PV).TIME, so the asub's timestamp
@@ -94,11 +101,22 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	assert( pSub->ftt == DBR_DOUBLE );
 	double		*	pTotalPeriod	= static_cast<double *>( pSub->t );
 	double			sampleInterval	= *pTotalPeriod / pSub->nova;
-	double			curDiff			= epicsTimeDiffInSeconds( &curTime,	   &pHistoryData->m_TimePrior );
-	double			pvDiff			= epicsTimeDiffInSeconds( &pSub->time, &pHistoryData->m_TimePrior );
+
+	// Get input data's timestamp
+	double			curDiff			= epicsTimeDiffInSeconds( &curTime,  &pHistoryData->m_TimePrior );
+	double			pvDiff			= -1;
+	if ( timeStatus == 0 )
+		pvDiff = epicsTimeDiffInSeconds( &dataTime, &pHistoryData->m_TimePrior );
 
 	// A zero pvDiff indicates we've already seen this sample
 	bool			sameSample		= pvDiff == 0 ? true : false;
+
+	if ( sampleInterval == 0 )
+		// Keep prior sample time
+		pHistoryData->m_TimePrior = dataTime;
+	else
+		// Keep current capture time
+		pHistoryData->m_TimePrior = curTime;
 
 	//	Check the duration since the last data point
 	// A non-zero sampleInterval indicates capture one sample per interval
@@ -119,12 +137,9 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 		return 1;
 	}
 
-	if ( sampleInterval == 0 )
-		// Keep prior sample time
-		pHistoryData->m_TimePrior = pSub->time;
-	else
-		// Keep current capture time
-		pHistoryData->m_TimePrior = curTime;
+	// Get ptr to data
+	assert( pSub->fta == DBR_DOUBLE );
+	double		*	pData			= static_cast<double *>( pSub->a );
 
 	// Write the data to the output buffer
 	assert( pSub->ftva == DBR_DOUBLE );

@@ -24,7 +24,7 @@
 # period divided by the size of the output array.
 #	Inputs:
 #		A	- a single scalar value of type double
-#		T	- unsigned integer time period in seconds
+#		T	- unsigned integer time period in seconds (Use 0 for update on change)
 #	Outputs:
 #		A	- Array of double's containing samples of A
 #				taken over the last T seconds.
