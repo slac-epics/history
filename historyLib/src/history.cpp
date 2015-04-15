@@ -14,6 +14,8 @@
 #include <aSubRecord.h>
 #include <dbAddr.h>
 #include <dbAccess.h>
+#include <dbScan.h>
+#include <dbStaticLib.h>
 #include <recGbl.h>
 #include <alarm.h>
 #include <error.h>
@@ -36,8 +38,11 @@ epicsUInt32				DEBUG_RMS		= 0;
 
 struct	HistoryData
 {
+	epicsTimeStamp		m_TimeBoot;
 	epicsTimeStamp		m_TimePrior;
-	epicsTimeStamp		m_BootTime;
+	epicsTimeStamp		m_TimePublish;
+	double			*	m_pBuffer;
+	size_t				m_nValues;
 };
 
 extern "C" long History_Init(	aSubRecord	*	pSub	)
@@ -50,6 +55,16 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 		fprintf( stderr, "History_Init %s: INPA must be type DOUBLE!\n", pSub->name );
 		return -1;
 	}
+	if ( pSub->ftp != DBR_DOUBLE )
+	{
+		fprintf( stderr, "History_Init %s: INPP must be type DOUBLE!\n", pSub->name );
+		return -1;
+	}
+	if ( pSub->ftt != DBR_DOUBLE )
+	{
+		fprintf( stderr, "History_Init %s: INPT must be type DOUBLE!\n", pSub->name );
+		return -1;
+	}
 	if ( pSub->ftva != DBR_DOUBLE )
 	{
 		fprintf( stderr, "History_Init %s: OUTA must be type DOUBLE!\n", pSub->name );
@@ -57,16 +72,27 @@ extern "C" long History_Init(	aSubRecord	*	pSub	)
 	}
 
 	HistoryData		*	pHistoryData	= new HistoryData;
-	epicsTimeGetCurrent( &pHistoryData->m_BootTime );
+	epicsTimeGetCurrent( &pHistoryData->m_TimeBoot );
 	pHistoryData->m_TimePrior.secPastEpoch	= 0;
 	pHistoryData->m_TimePrior.nsec			= 0;
-	pSub->dpvt								= pHistoryData;
-	pSub->neva								= 0;
+	pHistoryData->m_TimePublish.secPastEpoch= 0;
+	pHistoryData->m_TimePublish.nsec		= 0;
+	pHistoryData->m_nValues					= 0;
+
+	// Allocate a history buffer
+	void		*	pBuffer = callocMustSucceed( pSub->nova, sizeof(double), "HistoryInit" );
+	pHistoryData->m_pBuffer = static_cast<double *>( pBuffer );
 
 	// Initialize buffer to NAN as zero isn't appropriate for undefined values
-	double		*	pOut	= static_cast<double *>( pSub->vala );
+	double		*	pOut	= pHistoryData->m_pBuffer;
 	for ( epicsUInt32 i = 0; i < pSub->nova - 1; ++i )
 		*pOut++	= NAN;
+
+	// Clear number of values in output buffer
+	pSub->neva	= 0;
+
+	// Set private data
+	pSub->dpvt	= pHistoryData;
 	return 0;
 }
 
@@ -94,9 +120,14 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 	// Get input data's timestamp
 	epicsTimeStamp		dataTime;
 	int timeStatus	= dbGetTimeStamp( &pSub->inpa, &dataTime );
+	if ( timeStatus != 0 )
+	{
+		// Default to current timestamp
+		dataTime	= curTime;
+	}
 
 	//	Calculate our sample interval and the time delta's
-	//	The asub record's TSEL is $(PV).TIME, so the asub's timestamp
+	//	The aSubRecord's TSEL is $(PV).TIME, so the aSubRecord's timestamp
 	//	will be updated each time from the PV.
 	assert( pSub->ftt == DBR_DOUBLE );
 	double		*	pTotalPeriod	= static_cast<double *>( pSub->t );
@@ -104,86 +135,98 @@ extern "C" long History_Process( aSubRecord	*	pSub	)
 
 	// Get input data's timestamp
 	double			curDiff			= epicsTimeDiffInSeconds( &curTime,  &pHistoryData->m_TimePrior );
-	double			pvDiff			= -1;
-	if ( timeStatus == 0 )
-		pvDiff = epicsTimeDiffInSeconds( &dataTime, &pHistoryData->m_TimePrior );
+	double			pvDiff			= epicsTimeDiffInSeconds( &dataTime, &pHistoryData->m_TimePrior );
 
 	// A zero pvDiff indicates we've already seen this sample
 	bool			sameSample		= pvDiff == 0 ? true : false;
 
-	if ( sampleInterval == 0 )
-		// Keep prior sample time
-		pHistoryData->m_TimePrior = dataTime;
-	else
-		// Keep current capture time
-		pHistoryData->m_TimePrior = curTime;
-
 	//	Check the duration since the last data point
 	// A non-zero sampleInterval indicates capture one sample per interval
 	// A zero sampleInterval indicates capture each sample once
-	if (	( curDiff < sampleInterval )
-		||	( sampleInterval == 0 && sameSample ) )
+	bool			getSample		= false;
+	if (	( curDiff >= sampleInterval )
+		&&	( sampleInterval != 0 || !sameSample ) )
+		getSample = true;
+
+	if ( getSample )
 	{
-		if ( DEBUG_HIST >= 5 )
+		// Get ptr to data
+		assert( pSub->fta == DBR_DOUBLE );
+		double		*	pData			= static_cast<double *>( pSub->a );
+
+		// Write the data to the history buffer
+		double		*	pOut	= pHistoryData->m_pBuffer;
+		if ( pHistoryData->m_nValues < pSub->nova )
 		{
-			cout	<< string(pSub->name)
-					<< ": Dur "			<<	curDiff
-					<< " shorter than "	<<	sampleInterval
-					<< endl; 
+			//	Add the new data point
+			pOut[pHistoryData->m_nValues++]	= *pData;
+
+			if ( DEBUG_HIST >= 4 )
+			{
+				cout	<< string(pSub->name)
+						<< " now  adding: "	<<	*pData
+						<< endl; 
+			}
+		}
+		else
+		{
+			assert( pHistoryData->m_nValues	== pSub->nova );
+
+			//	Shift in the new data point
+			double		*	pNext	= pOut + 1;
+			for ( epicsUInt32 i = 0; i < pSub->nova - 1; ++i )
+			{
+				*pOut++	= *pNext++;
+			}
+			*pOut	= *pData;
+
+			if ( DEBUG_HIST >= 4 )
+			{
+				cout	<< string(pSub->name)
+						<< " rotating in: "	<<	*pData
+						<< endl; 
+			}
 		}
 
+		// Keep prior sample time
+		pHistoryData->m_TimePrior = dataTime;
+	}
+
+	// See if it's time to update the output array
+	assert( pSub->ftp == DBR_DOUBLE );
+	double		publishInterval	= *( static_cast<double *>( pSub->p ) );
+	double		publishDiff		= epicsTimeDiffInSeconds( &curTime,  &pHistoryData->m_TimePublish );
+	if ( !pSub->udf && ( publishDiff < publishInterval || !getSample ) )
+	{
+		// No need to update output array
 		// Return 1 to suppress output processing
 		recGblResetAlarms( pSub );
 		return 1;
 	}
 
-	// Get ptr to data
-	assert( pSub->fta == DBR_DOUBLE );
-	double		*	pData			= static_cast<double *>( pSub->a );
-
-	// Write the data to the output buffer
+	// Publish entire buffer to output array (replaces zeroes in unfilled output array w/ NAN's)
 	assert( pSub->ftva == DBR_DOUBLE );
-	double		*	pOut			= static_cast<double *>( pSub->vala );
-	if ( pSub->neva < pSub->nova )
-	{
-		//	Add the new data point
-		pOut[pSub->neva++]	= *pData;
+	double * pOut	= static_cast<double *>( pSub->vala );
+	memcpy( pOut, pHistoryData->m_pBuffer, pSub->nova * sizeof(double) );
 
-		if ( DEBUG_HIST >= 4 )
-		{
-			cout	<< string(pSub->name)
-					<< " now  adding: "	<<	*pData
-					<< endl; 
-		}
-	}
-	else
-	{
-		//	Shift in the new data point
-		double		*	pNext	= pOut + 1;
-		for ( epicsUInt32 i = 0; i < pSub->nova - 1; ++i )
-		{
-			*pOut++	= *pNext++;
-		}
-		*pOut	= *pData;
+	// Update number of valid entries in output array
+	pSub->neva	= pHistoryData->m_nValues;
 
-		if ( DEBUG_HIST >= 4 )
-		{
-			cout	<< string(pSub->name)
-					<< " rotating in: "	<<	*pData
-					<< endl; 
-		}
-	}
+	// Update publish time from latest sample time
+	pHistoryData->m_TimePublish = pHistoryData->m_TimePrior;
 
-	if ( DEBUG_HIST == 3 )
+	if ( DEBUG_HIST >= 3 )
 	{
 		cout	<< string(pSub->name)
-				<< ", nPts = "		<<	pSub->neva
-				<< ", curDiff = "	<<	curDiff
+				<< ", nPts = "			<<	pHistoryData->m_nValues
+				<< ", pvDiff = "		<<	pvDiff
+				<< ", publishDiff = "	<<	publishDiff
+				<< ", publishInterval = "	<<	publishInterval
 				<< endl; 
 	}
 
 	recGblResetAlarms( pSub );
-	// Note: Must return 0 or aSubRecord.c won't update outputs
+	// Return 0 so aSubRecord.c will update outputs
 	return 0;
 }
 

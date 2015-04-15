@@ -6,6 +6,8 @@
 #		PV			- Name of PV to track
 #		PERIOD		- Time period over which to retain history, in seconds
 #						If zero, each sample gets shifted into the buffer
+#		PUBLISH		- Publish period for updating output array, in seconds
+#						If zero, publish on each update
 #		N_SAMPLES	- Number of samples to keep, Output waveform's NELEM
 #						Defaults to 300
 #		EGU			- EGU for sample data, defaults to ""
@@ -24,7 +26,8 @@
 # period divided by the size of the output array.
 #	Inputs:
 #		A	- a single scalar value of type double
-#		T	- unsigned integer time period in seconds (Use 0 for update on change)
+#		P	- double publish interval in seconds (Use 0 for update on change)
+#		T	- double history interval in seconds (Use 0 for update on change)
 #	Outputs:
 #		A	- Array of double's containing samples of A
 #				taken over the last T seconds.
@@ -36,10 +39,15 @@ record( aSub, "$(OUT=$(PV)_$(NAME))_SUB" )
 	field( PINI, "NO" )
 	field( INAM, "History_Init" )
 	field( SNAM, "History_Process" )
+	field( EFLG, "ON CHANGE" )
 
 	field( FTA,  "DOUBLE" )
 	field( NOA,  1 )
 	field( INPA, "$(PV) CP NMS" )
+
+	field( FTP, "DOUBLE" )
+	field( NOP, 1 )
+	field( INPP, "$(PUBLISH=0.1)" )
 
 	field( FTT, "DOUBLE" )
 	field( NOT, 1 )
