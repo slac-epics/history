@@ -1,3 +1,7 @@
+R2.6.1	2017-04-19 Bruce Hill
+	Filtered out vxWorks cross targets as not yet supported.
+	No src changes.
+
 R2.6.0	2017-02-13 Bruce Hill
 	Updated for git workflow build support
 
