@@ -1,4 +1,3 @@
-include "base.dbd"
 
 function(History_Init)
 function(History_Process)
