@@ -1,3 +1,8 @@
+R2.6.2	2018-01-25 Bruce Hill
+	Removed "include base.dbd" line from history.dbd as it
+	results in duplicate dbd entries which R3.15.5 disallows.
+	No src changes.
+
 R2.6.1	2017-04-19 Bruce Hill
 	Filtered out vxWorks cross targets as not yet supported.
 	No src changes.
