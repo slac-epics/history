@@ -66,7 +66,7 @@ record( waveform, "$(OUT=$(PV)_$(NAME))" )
 	field( EGU,  "$(EGU=)" )
 	field( NELM, $(N_SAMPLES=300) )
 	field( TSEL, "$(PV).TIME" )
-	info( autosaveFields, "VAL" )
+	info( autosaveFields, "EGU" )
 }
 
 # Create an array of time coordinates in the specified units
