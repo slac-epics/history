@@ -1,10 +1,2 @@
-# Soon to be obsolete!
+# obsolete!
 # Please switch to wave_proc.tpl-arch
-$(WAVE)_AVG		1
-$(WAVE)_MAX		1
-$(WAVE)_MIN		1
-$(WAVE)_RMS		1
-$(WAVE)_STD		1
-$(WAVE)_SLOPE	1
-$(WAVE)_OFFSET	1
-
