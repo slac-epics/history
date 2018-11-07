@@ -13,12 +13,11 @@
 #include <dbFldTypes.h>
 #include <aSubRecord.h>
 #include <dbAddr.h>
-#include <dbAccess.h>
+#include <dbLink.h>
 #include <dbScan.h>
 #include <dbStaticLib.h>
 #include <recGbl.h>
 #include <alarm.h>
-#include <error.h>
 
 #include "history.h"
 
