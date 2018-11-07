@@ -1,3 +1,6 @@
+R2.7.0	2018-11-07 Bruce Hill
+	Simplified #include directives for EPICS 7 compatibility and avoiding deprecated warnings.
+
 R2.6.3	2018-08-27 Bruce Hill
 	Fixed autosaveFields for history waveforms to not autosave VAL
 
