@@ -1,3 +1,9 @@
+R2.8.0	2024-04-16 Marcio Donadio
+	Changed number of elements for averaging from NOA to NEA. Sometimes NOA
+        was 300 elements, but we were filling the arrays with only 200 elements
+        and the averaging was made over 300 elements, instead of 200. Also
+        added another DEBUG_RMS level to inspect internal variables.
+
 R2.7.0	2018-11-07 Bruce Hill
 	Simplified #include directives for EPICS 7 compatibility and avoiding deprecated warnings.
 
