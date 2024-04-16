@@ -346,7 +346,7 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 	double			minVal	= NAN;
 	double			maxVal	= NAN;
 	double			nVal	= 0;
-	for ( epicsUInt32 i = 0; i < pSub->noa; ++i )
+	for ( epicsUInt32 i = 0; i < pSub->nea; ++i )
 	{
 		double		dblVal	= *pData++;
 		if ( isnan(dblVal) )
@@ -362,6 +362,19 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 		sumY	+= dblVal;
 		sumYY	+= dblVal * dblVal;
 	}
+
+	if ( DEBUG_RMS >= 4 )
+	{
+		cout	<< string(pSub->name)
+				<< ": sumX = "	<<	sumX
+				<< ", sumXX = "	<<	sumXX
+				<< ", sumXY = "	<<	sumXY
+				<< ", sumY = "	<<	sumY
+				<< ", sumYY = "	<<	sumYY
+				<< ", nVal = "	<<	nVal
+				<< endl; 
+	}
+
 	double			avgVal	= NAN;
 	double			stdDev	= NAN;
 	double			rmsVal	= NAN;
@@ -374,7 +387,7 @@ extern "C" long RMS_Process( aSubRecord	*	pSub	)
 
 		//	Calc stdDev relative to avgVal
 		pData	= static_cast<double *>( pSub->a );
-		for ( epicsUInt32 i = 0; i < pSub->noa; ++i )
+		for ( epicsUInt32 i = 0; i < pSub->nea; ++i )
 		{
 			if ( isnan(*pData) )
 				continue;
